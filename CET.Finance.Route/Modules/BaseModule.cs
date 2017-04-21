@@ -1,12 +1,12 @@
-﻿using System;
+﻿using CET.Finance.Route.Common;
+using Nancy;
+using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
-using System.Diagnostics;
 using System.Dynamic;
 using System.Linq;
 using System.Text;
-using CET.Finance.Route.Common;
-using Nancy;
-using Newtonsoft.Json;
+using System.Threading.Tasks;
 
 namespace CET.Finance.Route.Modules
 {
@@ -15,28 +15,31 @@ namespace CET.Finance.Route.Modules
         protected RequestHead HeadData;
         protected string HeadOriginalStr;
         protected Dictionary<string, object> BodyData;
-        protected RouteData OptimalRoute; 
+        protected RouteData OptimalRoute;
         public BaseModule()
         {
             DateTime elapsedTime = DateTime.Now;
-            Before += ctx =>
+            Before += async (ctx, ct) =>
             {
-                GetRequestData(ctx.Request);
-
-                VerifyData(HeadData, BodyData, OptimalRoute);
-
+                await Task.Run(() =>
+                {
+                    GetRequestData(ctx.Request);
+                    VerifyData(HeadData, BodyData, OptimalRoute);
+                });
                 return null;
             };
 
-            After += ctx =>
+            After += async (ctx, ct) =>
             {
-                LogHelper.Info(HeadData.Command, string.Format("Route request successfully,Address:{0},Time:{1}(s),Head:{2},Body:{3},RouteData:{4},UseCache:{5}", Request.Url, (DateTime.Now - elapsedTime).TotalSeconds, HeadOriginalStr, JsonConvert.SerializeObject(BodyData), JsonConvert.SerializeObject(OptimalRoute), _useCache));
+                await Task.Run(() =>
+                {
+                    LogHelper.Info(HeadData.Command, string.Format("Route request successfully,Address:{0},Time:{1}(s),Head:{2},Body:{3},RouteData:{4},UseCache:{5}", Request.Url, (DateTime.Now - elapsedTime).TotalSeconds, HeadOriginalStr, JsonConvert.SerializeObject(BodyData), JsonConvert.SerializeObject(OptimalRoute), _useCache));
+                });
             };
 
             OnError += (ctx, ex) =>
             {
                 LogHelper.Error(string.Format("Route request Error,Command[{0}]", HeadData == null ? "" : HeadData.Command), string.Format("Route request error,Address:{0},End time:{1},Head:{2},Body:{3},RouteData:{4},Error Message:{5}", Request.Url, DateTime.Now, HeadOriginalStr, JsonConvert.SerializeObject(BodyData), JsonConvert.SerializeObject(OptimalRoute), ex.Message), ex);
-
                 dynamic response = new ExpandoObject();
                 response.Code = "500";
                 response.ErrorMessage = string.Format("Route请求异常，Message:{0}", ex.Message);
@@ -52,13 +55,13 @@ namespace CET.Finance.Route.Modules
         protected bool UseCache
         {
             get
-            {                
+            {
                 if (!string.IsNullOrEmpty(HeadData.UseCache) && HeadData.UseCache.ToLower() == "true"
                     && OptimalRoute.CacheTime != 0)
                 {
                     if (BodyData == null && OptimalRoute.CacheCondition == null)
                     {
-                        _useCache = true;                      
+                        _useCache = true;
                     }
                     else if ((BodyData != null && OptimalRoute.CacheCondition != null &&
                               BodyData.Count(x => x.Value != null) == OptimalRoute.CacheCondition.Count))
@@ -73,9 +76,9 @@ namespace CET.Finance.Route.Modules
                                             .Value.ToString())))
                             {
                                 _useCache = true;
-                            }                           
-                        }                       
-                    }                   
+                            }
+                        }
+                    }
                 }
                 return _useCache;
             }
@@ -114,7 +117,7 @@ namespace CET.Finance.Route.Modules
                 }
             }
             return key.ToLower();
-        } 
+        }
 
         /// <summary>
         /// 获取请求信息
