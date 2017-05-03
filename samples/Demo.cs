@@ -5,13 +5,13 @@ using System.Linq;
 using System.Net;
 using System.Text;
 using System.Web;
-using CET.Finance.Route.Common;
+using WebProxy.Net.Common;
 using JWT;
 using Nancy;
 using Newtonsoft.Json;
 using RestSharp;
 
-namespace CET.Finance.Route
+namespace WebProxy.Net.Route
 {
     public class Demo
     {
