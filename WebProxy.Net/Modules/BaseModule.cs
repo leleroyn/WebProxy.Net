@@ -75,20 +75,9 @@ namespace WebProxy.Net.Modules
                             {
                                 _useCache = true;
                             }
-                            else
-                            {
-                                _useCache = false;
-                            }
-                        }
-                        else
-                        {
-                            _useCache = false;
-                        }
-                    }
-                    else
-                    {
-                        _useCache = false;
-                    }
+                           
+                        }                        
+                    }                    
                 }
 
                 return _useCache;
