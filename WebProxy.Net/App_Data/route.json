@@ -31,6 +31,11 @@
 // -- CacheTime和CacheCondition用于判断请求是否使用缓存和构建缓存Key
 
 [
+ {
+    "Name": "Test",
+    "Command": "Test.Test",
+    "Handle": "http://www.baidu.com"
+  },
   //投融资配置
   {
     "Name": "验证用户登录凭证",

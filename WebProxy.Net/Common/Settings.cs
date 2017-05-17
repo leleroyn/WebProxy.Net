@@ -42,8 +42,17 @@ namespace WebProxy.Net.Common
         #endregion //验签密钥
 
         /// <summary>
-        /// NLog配置文件路径
+        /// 是否忽略日志
         /// </summary>
-        public static readonly string NlogConfig = ConfigurationManager.AppSettings["NlogConfig"];
+        /// <param name="channel"></param>
+        /// <returns></returns>
+        public static bool IgnoreLogChannel(string channel)
+        {
+            string ignoreLogChannel = ConfigurationManager.AppSettings["IgnoreLogChannel"];
+            if (string.IsNullOrWhiteSpace(ignoreLogChannel)) 
+                return false;
+            return ignoreLogChannel.Split(',').Any(o => o.Equals(channel, StringComparison.OrdinalIgnoreCase));
+        }
+ 
     }
 }

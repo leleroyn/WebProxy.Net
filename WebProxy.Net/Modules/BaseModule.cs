@@ -21,21 +21,31 @@ namespace WebProxy.Net.Modules
         public BaseModule()
         {
             DateTime elapsedTime = DateTime.Now;
+            bool ignoreLog = false;
             Before += ctx =>
             {
                 GetRequestData(ctx.Request);
+                ignoreLog = Settings.IgnoreLogChannel(HeadData.Channel);
                 VerifyData(HeadData, BodyData, OptimalRoute);
                 return null;
             };
 
             After += ctx =>
             {
-                LogHelper.Info(HeadData.Command, string.Format("Route request successfully,Address:{0},Time:{1}(s),Head:{2},Body:{3},RouteData:{4},UseCache:{5}", Request.Url, (DateTime.Now - elapsedTime).TotalSeconds, HeadOriginalStr, JsonConvert.SerializeObject(BodyData), JsonConvert.SerializeObject(OptimalRoute), _useCache));
+                if (!ignoreLog)
+                {
+                    LogHelper.Info(HeadData.Command, string.Format("Route request successfully,Time:{0}(s),Head:{1},Body:{2},RouteData:{3},UseCache:{4}", (DateTime.Now - elapsedTime).TotalSeconds, HeadOriginalStr, JsonConvert.SerializeObject(BodyData), JsonConvert.SerializeObject(OptimalRoute), _useCache));
+
+                }
             };
 
             OnError += (ctx, ex) =>
             {
-                LogHelper.Error(string.Format("Route request Error,Command[{0}]", HeadData == null ? "" : HeadData.Command), string.Format("Route request error,Address:{0},End time:{1},Head:{2},Body:{3},RouteData:{4},Error Message:{5}", Request.Url, DateTime.Now, HeadOriginalStr, JsonConvert.SerializeObject(BodyData), JsonConvert.SerializeObject(OptimalRoute), ex.Message), ex);
+                if (!ignoreLog)
+                {
+                    LogHelper.Error(string.Format("Route request Error,Command[{0}]", HeadData == null ? "" : HeadData.Command), string.Format("Route request error,End time:{0},Head:{1},Body:{2},RouteData:{3},Error Message:{4}", DateTime.Now, HeadOriginalStr, JsonConvert.SerializeObject(BodyData), JsonConvert.SerializeObject(OptimalRoute), ex.Message), ex);
+
+                }
                 dynamic response = new ExpandoObject();
                 response.Code = "500";
                 response.ErrorMessage = string.Format("Route请求异常，Message:{0}", ex.Message);
