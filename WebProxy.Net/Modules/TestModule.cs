@@ -48,8 +48,6 @@ namespace WebProxy.Net.Modules
                 RestClient client = new RestClient(url);
                 client.Proxy = null;
                 client.Timeout = 60000;
-                //client.CookieContainer = null;
-                //client.FollowRedirects = false;
                 RestRequest request = new RestRequest(Method.POST);
                 request.AddHeader("head", headData);
                 request.AddParameter("body", encryptBody);

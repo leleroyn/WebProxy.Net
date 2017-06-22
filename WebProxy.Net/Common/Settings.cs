@@ -42,17 +42,21 @@ namespace WebProxy.Net.Common
         #endregion //验签密钥
 
         /// <summary>
+        /// 忽略读取缓存的渠道
+        /// </summary>
+        public static string[] IgnoreCacheChannel = (ConfigurationManager.AppSettings["ignoreCacheChannel"].ToLower() ?? "").Split(',');
+
+        /// <summary>
         /// 是否忽略日志
         /// </summary>
         /// <param name="channel"></param>
         /// <returns></returns>
         public static bool IgnoreLogChannel(string channel)
         {
-            string ignoreLogChannel = ConfigurationManager.AppSettings["IgnoreLogChannel"];
-            if (string.IsNullOrWhiteSpace(ignoreLogChannel)) 
+            string ignoreLogChannel = ConfigurationManager.AppSettings["ignoreLogChannel"];
+            if (string.IsNullOrWhiteSpace(ignoreLogChannel))
                 return false;
             return ignoreLogChannel.Split(',').Any(o => o.Equals(channel, StringComparison.OrdinalIgnoreCase));
         }
- 
     }
 }
