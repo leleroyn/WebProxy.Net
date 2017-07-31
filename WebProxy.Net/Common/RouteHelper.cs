@@ -7,9 +7,9 @@ using System.Web;
 using System.Web.Caching;
 using Newtonsoft.Json;
 
-namespace WebProxy.Net.Common
+namespace WebProxy.Common
 {
-    public class RouteHelper
+    public static class RouteHelper
     {
         public static string RoutePath = Path.Combine(Bootstrapper.RootPath, "App_Data", "route.json");
 

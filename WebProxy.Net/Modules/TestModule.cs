@@ -4,13 +4,12 @@ using System.Dynamic;
 using System.Net;
 using System.Text;
 using System.Web;
-using WebProxy.Net.Common;
-using JWT;
+using WebProxy.Common;
 using Nancy;
 using Newtonsoft.Json;
 using RestSharp;
 
-namespace WebProxy.Net.Modules
+namespace WebProxy.Modules
 {
     public class TestModule : NancyModule
     {
@@ -36,10 +35,10 @@ namespace WebProxy.Net.Modules
                 head.RequestHost = "127.0.0.1";
                 head.RequestTime = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
                 string headData = JsonConvert.SerializeObject(head);
-                headData = JsonWebToken.Base64UrlEncode(Encoding.UTF8.GetBytes(headData));
+                headData = EncodingHelper.Base64UrlEncode(Encoding.UTF8.GetBytes(headData));
 
                 string bodyData = Request.Form["body"];
-                bodyData = JsonWebToken.Base64UrlEncode(Encoding.UTF8.GetBytes(bodyData));
+                bodyData = EncodingHelper.Base64UrlEncode(Encoding.UTF8.GetBytes(bodyData));
                 string encryptBody = EncryptHelper.DESEncrypt(bodyData, Settings.GetDesKey(head.Channel));
 
                 string url = Request.Url.SiteBase + "/Api";

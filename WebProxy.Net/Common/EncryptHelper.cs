@@ -7,9 +7,9 @@ using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Web;
 
-namespace WebProxy.Net.Common
+namespace WebProxy.Common
 {
-    public class EncryptHelper
+    public static class EncryptHelper
     {
         #region DES加密/解密
 

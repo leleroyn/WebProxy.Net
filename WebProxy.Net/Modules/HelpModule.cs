@@ -1,9 +1,9 @@
 ﻿using System;
-using WebProxy.Net.Common;
+using WebProxy.Common;
 using Nancy;
 using Newtonsoft.Json;
 
-namespace WebProxy.Net.Modules
+namespace WebProxy.Modules
 {
     public class HelpModule : NancyModule
     {

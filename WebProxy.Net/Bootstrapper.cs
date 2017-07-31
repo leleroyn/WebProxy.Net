@@ -4,14 +4,14 @@ using System.Collections.Generic;
 using System.Dynamic;
 using System.Linq;
 using System.Web;
-using WebProxy.Net.Common;
-using WebProxy.Net.Modules;
+using WebProxy.Common;
+using WebProxy.Modules;
 using Nancy.Bootstrapper;
 using Nancy.TinyIoc;
 using Newtonsoft.Json;
 using Ucsmy.Usp.Api;
 
-namespace WebProxy.Net
+namespace WebProxy
 {
 
     public class Bootstrapper : DefaultNancyBootstrapper

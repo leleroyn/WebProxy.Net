@@ -5,9 +5,9 @@ using System.Web;
 using System.Web.Caching;
 using Newtonsoft.Json;
 
-namespace WebProxy.Net.Common
+namespace WebProxy.Common
 {
-    public class CacheHelper
+    public static class CacheHelper
     {
         private static readonly Cache Cache = HttpRuntime.Cache;
         private static readonly TimeSpan DefaultExpriedTime = new TimeSpan(0, 0, 60);

@@ -15,7 +15,6 @@ E:\tools\开源示例\WebProxy.net\CET.Finance.Route\bin\RestSharp.xml
 E:\tools\开源示例\WebProxy.net\CET.Finance.Route\obj\Debug\CET.Finance.Route.dll
 E:\tools\开源示例\WebProxy.net\CET.Finance.Route\obj\Debug\CET.Finance.Route.pdb
 E:\tools\开源示例\WebProxy.net\WebProxy.Net\bin\App_Data\route.json
-E:\tools\开源示例\WebProxy.net\WebProxy.Net\bin\JWT.dll
 E:\tools\开源示例\WebProxy.net\WebProxy.Net\bin\Nancy.dll
 E:\tools\开源示例\WebProxy.net\WebProxy.Net\bin\Nancy.Hosting.Aspnet.dll
 E:\tools\开源示例\WebProxy.net\WebProxy.Net\bin\Newtonsoft.Json.dll
@@ -25,10 +24,10 @@ E:\tools\开源示例\WebProxy.net\WebProxy.Net\bin\Nancy.xml
 E:\tools\开源示例\WebProxy.net\WebProxy.Net\bin\Nancy.Hosting.Aspnet.xml
 E:\tools\开源示例\WebProxy.net\WebProxy.Net\bin\Newtonsoft.Json.xml
 E:\tools\开源示例\WebProxy.net\WebProxy.Net\bin\RestSharp.xml
-E:\tools\开源示例\WebProxy.net\WebProxy.Net\obj\Debug\WebProxy.Net.csprojResolveAssemblyReference.cache
-E:\tools\开源示例\WebProxy.net\WebProxy.Net\bin\WebProxy.Net.dll
-E:\tools\开源示例\WebProxy.net\WebProxy.Net\bin\WebProxy.Net.pdb
-E:\tools\开源示例\WebProxy.net\WebProxy.Net\obj\Debug\WebProxy.Net.dll
-E:\tools\开源示例\WebProxy.net\WebProxy.Net\obj\Debug\WebProxy.Net.pdb
 E:\tools\开源示例\WebProxy.net\WebProxy.Net\bin\RabbitMQ.Client.dll
-E:\tools\开源示例\WebProxy.net\WebProxy.Net\bin\WebProxy.Net.dll.config
+E:\tools\开源示例\WebProxy.net\WebProxy.Net\bin\WebProxy.dll.config
+E:\tools\开源示例\WebProxy.net\WebProxy.Net\bin\WebProxy.dll
+E:\tools\开源示例\WebProxy.net\WebProxy.Net\bin\WebProxy.pdb
+E:\tools\开源示例\WebProxy.net\WebProxy.Net\obj\Debug\WebProxy.dll
+E:\tools\开源示例\WebProxy.net\WebProxy.Net\obj\Debug\WebProxy.pdb
+E:\tools\开源示例\WebProxy.net\WebProxy.Net\obj\Debug\WebProxy.Net.csprojResolveAssemblyReference.cache

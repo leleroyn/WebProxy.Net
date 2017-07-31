@@ -4,11 +4,11 @@ using System.Diagnostics;
 using System.Dynamic;
 using System.Linq;
 using System.Text;
-using WebProxy.Net.Common;
+using WebProxy.Common;
 using Nancy;
 using Newtonsoft.Json;
 
-namespace WebProxy.Net.Modules
+namespace WebProxy.Modules
 {
     public class BaseModule : NancyModule
     {
@@ -16,7 +16,7 @@ namespace WebProxy.Net.Modules
         protected string HeadOriginalStr;
         protected Dictionary<string, object> BodyData;
         protected RouteData OptimalRoute;
-        private bool _useCache = false;
+        private bool _useCache;
 
         public BaseModule()
         {
@@ -26,7 +26,7 @@ namespace WebProxy.Net.Modules
             {
                 GetRequestData(ctx.Request);
                 ignoreLog = Settings.IgnoreLogChannel(HeadData.Channel);
-                VerifyData(HeadData, BodyData, OptimalRoute);
+                VerifyData(HeadData, OptimalRoute);
                 return null;
             };
 
@@ -35,7 +35,6 @@ namespace WebProxy.Net.Modules
                 if (!ignoreLog)
                 {
                     LogHelper.Info(HeadData.Command, string.Format("Route request successfully,Time:{0}(s),Head:{1},Body:{2},RouteData:{3},UseCache:{4}", (DateTime.Now - elapsedTime).TotalSeconds, HeadOriginalStr, JsonConvert.SerializeObject(BodyData), JsonConvert.SerializeObject(OptimalRoute), _useCache));
-
                 }
             };
 
@@ -44,7 +43,6 @@ namespace WebProxy.Net.Modules
                 if (!ignoreLog)
                 {
                     LogHelper.Error(string.Format("Route request Error,Command[{0}]", HeadData == null ? "" : HeadData.Command), string.Format("Route request error,End time:{0},Head:{1},Body:{2},RouteData:{3},Error Message:{4}", DateTime.Now, HeadOriginalStr, JsonConvert.SerializeObject(BodyData), JsonConvert.SerializeObject(OptimalRoute), ex.Message), ex);
-
                 }
                 dynamic response = new ExpandoObject();
                 response.Code = "500";
@@ -71,18 +69,12 @@ namespace WebProxy.Net.Modules
                     else if ((BodyData != null && OptimalRoute.CacheCondition != null &&
                               BodyData.Count(x => x.Value != null) == OptimalRoute.CacheCondition.Count))
                     {
-                        if (BodyData.Count(x => x.Value != null) ==
-                            BodyData.Count(x => OptimalRoute.CacheCondition.ContainsKey(x.Key)))
-                        {
-                            if (BodyData.Count(x => x.Value != null) == OptimalRoute.CacheCondition.Count(
-                                x => x.Value.Contains(
-                                        BodyData.First(
-                                            y => string.Equals(y.Key, x.Key, StringComparison.OrdinalIgnoreCase))
-                                            .Value.ToString())))
-                            {
-                                _useCache = true;
-                            }                           
-                        }                        
+                        _useCache |= (BodyData.Count(x => x.Value != null) ==
+                                                    BodyData.Count(x => OptimalRoute.CacheCondition.ContainsKey(x.Key)) && BodyData.Count(x => x.Value != null) == OptimalRoute.CacheCondition.Count(
+                                                        x => x.Value.Contains(
+                                                                BodyData.First(
+                                                                    y => string.Equals(y.Key, x.Key, StringComparison.OrdinalIgnoreCase))
+                                                                    .Value.ToString())));
                     }                    
                 }
                 return _useCache;
@@ -129,7 +121,7 @@ namespace WebProxy.Net.Modules
         /// <summary>
         /// 获取请求信息
         /// </summary>
-        private void GetRequestData(Request request)
+        void GetRequestData(Request request)
         {
             //- Head
             var head = request.Headers["head"].FirstOrDefault();
@@ -137,7 +129,7 @@ namespace WebProxy.Net.Modules
             {
                 throw new Exception("请求报文头数据不存在或格式不正确");
             }
-            HeadOriginalStr = Encoding.UTF8.GetString(JWT.JsonWebToken.Base64UrlDecode(head));
+            HeadOriginalStr = Encoding.UTF8.GetString(EncodingHelper.Base64UrlDecode(head));
             HeadData = JsonConvert.DeserializeObject<RequestHead>(HeadOriginalStr);
             //- Body
             var bodyForm = request.Form["body"];
@@ -145,7 +137,7 @@ namespace WebProxy.Net.Modules
             {
                 string key = Settings.GetDesKey(HeadData.Channel);
                 bodyForm = EncryptHelper.DESDecrypt(bodyForm, key);
-                bodyForm = Encoding.UTF8.GetString(JWT.JsonWebToken.Base64UrlDecode(bodyForm));
+                bodyForm = Encoding.UTF8.GetString(EncodingHelper.Base64UrlDecode(bodyForm));
                 BodyData = JsonConvert.DeserializeObject<Dictionary<string, object>>(bodyForm);
             }
             //- Route
@@ -155,15 +147,15 @@ namespace WebProxy.Net.Modules
         /// <summary>
         /// 校验数据
         /// </summary>
-        /// <param name="head"></param>
-        /// <param name="body"></param>
+        /// <param name="head"></param> 
         /// <param name="route"></param>
-        private void VerifyData(RequestHead head, Dictionary<string, object> body, RouteData route)
+        /// <exception cref="T:System.ArgumentNullException"></exception>
+        void VerifyData(RequestHead head, RouteData route)
         {
             if (head == null)
-                throw new ArgumentNullException("Head", "请求报文头数据不存在");
+                throw new ArgumentNullException(nameof(head), "请求报文头数据不存在");
             if (route == null)
-                throw new ArgumentNullException("Route", "请求路由不存在");
+                throw new ArgumentNullException(nameof(route), "请求路由不存在");
         }
     }
 }

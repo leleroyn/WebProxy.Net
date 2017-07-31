@@ -8,13 +8,12 @@ using System.Net;
 using System.Text;
 using System.Threading.Tasks;
 using System.Web;
-using JWT;
 using Newtonsoft.Json;
 using RestSharp;
 
-namespace WebProxy.Net.Common
+namespace WebProxy.Common
 {
-    public class HttpClient
+    public static class HttpClient
     {
         public static async Task<string> PostAsync(string url, RequestHead head, Dictionary<string, object> body)
         {
@@ -28,11 +27,11 @@ namespace WebProxy.Net.Common
             headData.UserId = head.UserId;
 
             string headStr = JsonConvert.SerializeObject(headData);
-            string postHead = JsonWebToken.Base64UrlEncode(Encoding.UTF8.GetBytes(headStr));
+            string postHead = EncodingHelper.Base64UrlEncode(Encoding.UTF8.GetBytes(headStr));
 
             //-- Body
             string bodyStr = JsonConvert.SerializeObject(body);
-            string postBody = JsonWebToken.Base64UrlEncode(Encoding.UTF8.GetBytes(bodyStr));
+            string postBody = EncodingHelper.Base64UrlEncode(Encoding.UTF8.GetBytes(bodyStr));
 
             //-- Post Data
             RestClient client = new RestClient(url);

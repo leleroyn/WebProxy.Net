@@ -2,7 +2,7 @@
 using System.Configuration;
 using Ucsmy.Usp.Api;
 
-namespace WebProxy.Net.Common
+namespace WebProxy.Common
 {
     public static class LogHelper
     {

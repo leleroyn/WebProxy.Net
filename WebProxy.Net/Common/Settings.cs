@@ -7,9 +7,9 @@ using System.IO;
 using System.Linq;
 using System.Web;
 
-namespace WebProxy.Net.Common
+namespace WebProxy.Common
 {
-    public class Settings
+    public static class Settings
     {
         #region 验签密钥
 

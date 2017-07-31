@@ -15,3 +15,4 @@ E:\tools\开源示例\WebProxy.net\WebProxy.Net\obj\Release\WebProxy.Net.dll
 E:\tools\开源示例\WebProxy.net\WebProxy.Net\obj\Release\WebProxy.Net.pdb
 E:\tools\开源示例\WebProxy.net\WebProxy.Net\bin\RabbitMQ.Client.dll
 E:\tools\开源示例\WebProxy.net\WebProxy.Net\obj\Release\WebProxy.Net.csprojResolveAssemblyReference.cache
+E:\tools\开源示例\WebProxy.net\WebProxy.Net\bin\WebProxy.Net.dll.config

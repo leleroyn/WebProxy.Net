@@ -1,10 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using WebProxy.Net.Common;
+using WebProxy.Common;
 using Newtonsoft.Json;
 
-namespace WebProxy.Net.Modules
+namespace WebProxy.Modules
 {
     public class HomeModule : BaseModule
     {
