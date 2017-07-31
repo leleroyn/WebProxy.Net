@@ -1,0 +1,13 @@
+[
+  //-- 营销平台
+  {
+    "Name": "判断是否符合活动条件",
+    "Command": "MarketPlatformApi.IsMeetRule",
+    "Handle": "http://txcyxapi.ucsmy.com/MarketPlatformApi/IsMeetRule"
+  },
+  {
+    "Name": "登记投资成功订单",
+    "Command": "MarketPlatformApi.JoinYX_FActivity",
+    "Handle": "http://txcyxapi.ucsmy.com/MarketPlatformApi/JoinYX_FActivity"
+  }
+]

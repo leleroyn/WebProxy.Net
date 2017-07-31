@@ -16,22 +16,20 @@ namespace WebProxy
 
     public class Bootstrapper : DefaultNancyBootstrapper
     {
-        public static string RootPath { get; set; }
-
         protected override void ApplicationStartup(TinyIoCContainer container, IPipelines pipelines)
         {
             base.ApplicationStartup(container, pipelines);
-            if (string.IsNullOrWhiteSpace(RootPath))
+            if (string.IsNullOrWhiteSpace(Settings.RootPath))
             {
-                RootPath = RootPathProvider.GetRootPath();
+                Settings.RootPath = RootPathProvider.GetRootPath();
             }
 
-            Ucsmy.Usp.Api.ApiBaseService.Initialize();
+            ApiBaseService.Initialize();
         }      
 
         protected override void RequestStartup(TinyIoCContainer container, IPipelines pipelines, NancyContext context)
         {
-            base.RequestStartup(container, pipelines, context);        
+            base.RequestStartup(container, pipelines, context);
 
             pipelines.OnError += (ctx, ex) =>
             {                

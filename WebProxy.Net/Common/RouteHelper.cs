@@ -11,8 +11,6 @@ namespace WebProxy.Common
 {
     public static class RouteHelper
     {
-        public static string RoutePath = Path.Combine(Bootstrapper.RootPath, "App_Data", "route.json");
-
         /// <summary>
         /// 获取路由配置
         /// </summary>        
@@ -23,15 +21,26 @@ namespace WebProxy.Common
                 var routeDic = HttpRuntime.Cache["route.json"] as Dictionary<string, List<RouteData>>;
                 if (routeDic == null)
                 {
-                    var routeContent = File.ReadAllText(RoutePath);
-                    var routeSet = JsonConvert.DeserializeObject<List<RouteData>>(routeContent);
+                    var routePath = Path.Combine(Settings.RootPath, "App_Data");
+                    string[] files = Directory.GetFiles(routePath, "*.json", SearchOption.AllDirectories);
 
-                    routeDic = routeSet.GroupBy(o => o.Command).ToDictionary(
-                          k => k.Key,
-                          v => v.Select(o => o).ToList()
-                         );
+                    routeDic = new Dictionary<string, List<RouteData>>();
+                    foreach (var file in files)
+                    {
+                        var routeContent = File.ReadAllText(file);
+                        var routeSet = JsonConvert.DeserializeObject<List<RouteData>>(routeContent);
 
-                    HttpRuntime.Cache.Insert("route.json", routeDic, new CacheDependency(RoutePath));
+                        var singleDic = routeSet.GroupBy(o => o.Command).ToDictionary(
+                              k => k.Key,
+                              v => v.Select(o => o).ToList()
+                             );
+
+                        //跨配置文件Command必须保持唯一
+                        foreach (var route in singleDic)
+                            routeDic.Add(route.Key, route.Value);
+                    }
+
+                    CacheHelper.Set("route.json", routeDic, files);
                 }
                 return routeDic;
             }
@@ -44,7 +53,7 @@ namespace WebProxy.Common
         /// <returns></returns>
         public static RouteData GetOptimalRoute(RequestHead head)
         {
-            var routes = RouteDatas.FirstOrDefault(x => string.Equals(x.Key,head.Command,StringComparison.OrdinalIgnoreCase));
+            var routes = RouteDatas.FirstOrDefault(x => string.Equals(x.Key, head.Command, StringComparison.OrdinalIgnoreCase));
             if (routes.Value == null)
                 return null;
 

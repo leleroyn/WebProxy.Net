@@ -1,0 +1,23 @@
+[
+  //-- 银行接口
+  {
+    "Name": "绑卡",
+    "Command": "BankServer.BindCard",
+    "Handle": "http://xcbankservice.ucsmy.com/bs/BankServer/BindCard"
+  },
+  {
+    "Name": "解绑",
+    "Command": "BankServer.UnBindCard",
+    "Handle": "http://xcbankservice.ucsmy.com/bs/BankServer/UnBindCard"
+  },
+  {
+    "Name": "解析网关支付同步通知返回报文",
+    "Command": "BankCallBack.GatewayPayAnalysis",
+    "Handle": "http://xcbankservice.ucsmy.com/bs/BankCallBack/GatewayPayAnalysis"
+  },
+  {
+    "Name": "网关支付签名",
+    "Command": "BankServer.GatewayPaySign",
+    "Handle": "http://xcbankservice.ucsmy.com/bs/BankServer/GatewayPaySign"
+  }
+]

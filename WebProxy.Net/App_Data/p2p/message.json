@@ -1,0 +1,17 @@
+[ //-- 短信相关--
+  {
+    "Name": "获取短信验证码",
+    "Command": "Message.SendMessageValidateCode",
+    "Handle": "http://xcbankservice.ucsmy.com/p2p/Message/SendMessageValidateCode"
+  },
+  {
+    "Name": "验证短信验证码是否正确",
+    "Command": "Message.ValidateMessageCode",
+    "Handle": "http://xcbankservice.ucsmy.com/p2p/Message/ValidateMessageCode"
+  },
+  {
+    "Name": "根据手机号码获取短信验证码相关信息",
+    "Command": "Message.GetValidateCodeByMobile",
+    "Handle": "http://xcbankservice.ucsmy.com/p2p/Message/GetValidateCodeByMobile"
+  }
+]

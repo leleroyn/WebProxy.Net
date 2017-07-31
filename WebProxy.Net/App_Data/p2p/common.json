@@ -1,0 +1,20 @@
+[ //-- 系统基本配置--
+  {
+    "Name": "获取前台脚本和样式表版本号",
+    "Command": "Common.GetCssJsVersion",
+    "Handle": "http://xcbankservice.ucsmy.com/p2p/Common/GetCssJsVersion",
+    "CacheTime": 30
+  },
+  {
+    "Name": "获取平台名称",
+    "Command": "Common.GetPlatformName",
+    "Handle": "http://xcbankservice.ucsmy.com/p2p/Common/GetPlatformName",
+    "CacheTime": 30
+  },
+  {
+    "Name": "获取前台站点访问域名",
+    "Command": "Common.GetHomeDomain",
+    "Handle": "http://xcbankservice.ucsmy.com/p2p/Common/GetHomeDomain",
+    "CacheTime": 30
+  }
+]

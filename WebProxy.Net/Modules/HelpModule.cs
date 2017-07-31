@@ -11,7 +11,7 @@ namespace WebProxy.Modules
         {
             Get["/"] = _ =>
             {
-                return string.Format("Server Time：{0}", DateTime.Now);
+                return string.Format("Server Time:{0}", DateTime.Now);
             };
 
             Get["/Help"] = _ =>

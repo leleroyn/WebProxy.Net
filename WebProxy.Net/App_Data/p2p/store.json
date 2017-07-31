@@ -1,0 +1,18 @@
+[
+  //-- 缓存读取--
+  {
+    "Name": "远程存储",
+    "Command": "Store.Set",
+    "Handle": "http://xcbankservice.ucsmy.com/p2p/Store/Set"
+  },
+  {
+    "Name": "远程存储获取",
+    "Command": "Store.Get",
+    "Handle": "http://xcbankservice.ucsmy.com/p2p/Store/Get"
+  },
+  {
+    "Name": "远程存储移除",
+    "Command": "Store.Remove",
+    "Handle": "http://xcbankservice.ucsmy.com/p2p/Store/Remove"
+  }
+]
