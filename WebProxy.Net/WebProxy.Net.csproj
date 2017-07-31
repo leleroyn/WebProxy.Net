@@ -122,9 +122,6 @@
     <Content Include="App_Data\p2p\user.json" />
     <Content Include="App_Data\p2p\verification.json" />
     <Content Include="App_Data\pluscoupon.json" />
-    <Content Include=".gitattributes" />
-    <Content Include=".gitignore" />
-    <Content Include="LICENSE" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
