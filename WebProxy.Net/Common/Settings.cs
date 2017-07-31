@@ -58,5 +58,10 @@ namespace WebProxy.Net.Common
                 return false;
             return ignoreLogChannel.Split(',').Any(o => o.Equals(channel, StringComparison.OrdinalIgnoreCase));
         }
+
+        /// <summary>
+        /// 程序根目录
+        /// </summary>
+        public static string RootPath { get; set; }
     }
 }

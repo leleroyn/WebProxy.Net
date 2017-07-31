@@ -180,10 +180,10 @@ namespace WebProxy.Net.Modules
         private void VerifyData(RequestHead head, Dictionary<string, object> body, RouteData route)
         {
             if (head == null)
-                throw new ArgumentNullException(nameof(head), "请求报文头数据不存在");
+                throw new ArgumentNullException("head", "请求报文头数据不存在");
 
             if (route == null)
-                throw new ArgumentNullException(nameof(route), "请求路由不存在");
+                throw new ArgumentNullException("route", "请求路由不存在");
         }
 
         /// <summary>

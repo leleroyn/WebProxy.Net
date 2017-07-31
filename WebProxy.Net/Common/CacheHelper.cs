@@ -65,5 +65,16 @@ namespace WebProxy.Net.Common
 
             Cache.Insert(key, content, null, DateTime.Now.AddSeconds(expires.Value.TotalSeconds), Cache.NoSlidingExpiration);
         }
+
+        /// <summary>
+        /// 设置缓存
+        /// </summary>
+        /// <param name="key">缓存Key值</param>
+        /// <param name="value">缓存Value值</param>
+        /// <param name="dependencyFiles">依赖文件</param>
+        public static void Set(string key, object value, string[] dependencyFiles = null)
+        {
+            HttpRuntime.Cache.Insert(key, value, new CacheDependency(dependencyFiles));
+        }
     }
 }

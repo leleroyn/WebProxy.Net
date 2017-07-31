@@ -1,0 +1,54 @@
+[ //-- App云端--
+  {
+    "Name": "App云端换肤",
+    "Command": "Cloud.GetCloud",
+    "Handle": "http://xcbankservice.ucsmy.com/p2p/Cloud/GetCloud",
+    "CacheTime": 30
+  },
+  {
+    "Name": "App版本升级",
+    "Command": "Cloud.UpdateVersion",
+    "Handle": "http://xcbankservice.ucsmy.com/p2p/Cloud/UpdateVersion",
+    "CacheTime": 30
+  },
+  {
+    "Name": "获取最近回款订单信息 APP",
+    "Command": "App.RecentlyPaymentOrder",
+    "Handle": "http://xcbankservice.ucsmy.com/p2p/App/RecentlyPaymentOrder"
+  },
+  {
+    "Name": "导航列表 APP",
+    "Command": "App.AppPageList",
+    "Handle": "http://xcbankservice.ucsmy.com/p2p/App/AppPageList"
+  },
+  {
+    "Name": "获取用户邀请数据",
+    "Command": "App.GetMyInvitation",
+    "Handle": "http://xcbankservice.ucsmy.com/p2p/App/GetMyInvitation"
+  },
+  {
+    "Name": "App获取最新下载地址",
+    "Command": "App.GetAppDownLoadUrl",
+    "Handle": "http://xcbankservice.ucsmy.com/p2p/App/GetAppDownLoadUrl"
+  },
+  {
+    "Name": "获取最近回款订单信息",
+    "Command": "App.GatewayPaySign",
+    "Handle": "http://xcbankservice.ucsmy.com/p2p/App/RecentlyPaymentOrder"
+  },
+  {
+    "Name": "获取APP H5页面",
+    "Command": "App.AppPageList",
+    "Handle": "http://xcbankservice.ucsmy.com/p2p/App/AppPageList"
+  },
+  {
+    "Name": "获取邀请用户数据列表",
+    "Command": "App.GetMyInvitation",
+    "Handle": "http://xcbankservice.ucsmy.com/p2p/App/GetMyInvitation"
+  },
+  {
+    "Name": "App获取最新下载地址",
+    "Command": "App.GetAppDownLoadUrl",
+    "Handle": "http://xcbankservice.ucsmy.com/p2p/App/GetAppDownLoadUrl"
+  }
+]
