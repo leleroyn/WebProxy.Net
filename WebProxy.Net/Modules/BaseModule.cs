@@ -5,11 +5,11 @@ using System.Dynamic;
 using System.IO;
 using System.Linq;
 using System.Text;
-using WebProxy.Net.Common;
+using WebProxy.Common;
 using Nancy;
 using Newtonsoft.Json;
 
-namespace WebProxy.Net.Modules
+namespace WebProxy.Modules
 {
     public class BaseModule : NancyModule
     {
@@ -17,7 +17,7 @@ namespace WebProxy.Net.Modules
         protected string HeadOriginalStr;
         protected Dictionary<string, object> BodyData;
         protected RouteData OptimalRoute;
-        private bool _useCache = false;
+        private bool _useCache;
 
         public BaseModule()
         {
@@ -27,7 +27,7 @@ namespace WebProxy.Net.Modules
             {
                 GetRequestData(ctx.Request);
                 ignoreLog = Settings.IgnoreLogChannel(HeadData.Channel);
-                VerifyData(HeadData, BodyData, OptimalRoute);
+                VerifyData(HeadData, OptimalRoute);
                 return null;
             };
 
@@ -89,21 +89,9 @@ namespace WebProxy.Net.Modules
                     && OptimalRoute.CacheTime != 0
                     && !IsIgnoreCache())
                 {
-                    if ((BodyData == null && OptimalRoute.CacheCondition == null)
-                        || (BodyData != null && OptimalRoute.CacheCondition != null && BodyData.Count(x => x.Value != null) == BodyData.Count(x => OptimalRoute.CacheCondition.ContainsKey(x.Key)) && BodyData.Count(x => x.Value != null) == OptimalRoute.CacheCondition.Count(x => x.Value.Contains(BodyData.First(y => string.Equals(y.Key, x.Key, StringComparison.OrdinalIgnoreCase)).Value.ToString()))))
-                    {
-                        _useCache = true;
-                    }
-                    else
-                    {
-                        _useCache = false;
-                    }
+                    _useCache |= ((BodyData == null && OptimalRoute.CacheCondition == null)
+                        || (BodyData != null && OptimalRoute.CacheCondition != null && BodyData.Count(x => x.Value != null) == BodyData.Count(x => OptimalRoute.CacheCondition.ContainsKey(x.Key)) && BodyData.Count(x => x.Value != null) == OptimalRoute.CacheCondition.Count(x => x.Value.Contains(BodyData.First(y => string.Equals(y.Key, x.Key, StringComparison.OrdinalIgnoreCase)).Value.ToString()))));
                 }
-                else
-                {
-                    _useCache = false;
-                }
-
                 return _useCache;
             }
             set
@@ -111,7 +99,6 @@ namespace WebProxy.Net.Modules
                 _useCache = value;
             }
         }
-
 
         /// <summary>
         /// 生成缓存Key
@@ -156,7 +143,7 @@ namespace WebProxy.Net.Modules
             {
                 throw new Exception("请求报文头数据不存在或格式不正确");
             }
-            HeadOriginalStr = Encoding.UTF8.GetString(JWT.JsonWebToken.Base64UrlDecode(head));
+            HeadOriginalStr = Encoding.UTF8.GetString(EncodingHelper.Base64UrlDecode(head));
             HeadData = JsonConvert.DeserializeObject<RequestHead>(HeadOriginalStr);
             //- Body
             var bodyForm = request.Form["body"];
@@ -164,7 +151,7 @@ namespace WebProxy.Net.Modules
             {
                 string key = Settings.GetDesKey(HeadData.Channel);
                 bodyForm = EncryptHelper.DESDecrypt(bodyForm, key);
-                bodyForm = Encoding.UTF8.GetString(JWT.JsonWebToken.Base64UrlDecode(bodyForm));
+                bodyForm = Encoding.UTF8.GetString(EncodingHelper.Base64UrlDecode(bodyForm));
                 BodyData = JsonConvert.DeserializeObject<Dictionary<string, object>>(bodyForm);
             }
             //- Route
@@ -174,16 +161,15 @@ namespace WebProxy.Net.Modules
         /// <summary>
         /// 校验数据
         /// </summary>
-        /// <param name="head"></param>
-        /// <param name="body"></param>
+        /// <param name="head"></param>  
         /// <param name="route"></param>
-        private void VerifyData(RequestHead head, Dictionary<string, object> body, RouteData route)
+        private void VerifyData(RequestHead head, RouteData route)
         {
             if (head == null)
-                throw new ArgumentNullException("head", "请求报文头数据不存在");
+                throw new ArgumentNullException(nameof(head), "请求报文头数据不存在");
 
             if (route == null)
-                throw new ArgumentNullException("route", "请求路由不存在");
+                throw new ArgumentNullException(nameof(route), "请求路由不存在");
         }
 
         /// <summary>
