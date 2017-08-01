@@ -12,6 +12,7 @@ namespace WebProxy.Common
         public string Version { get; set; }
         public SytemType System { get; set; }
         public string Handle { get; set; }
+        public Dictionary<string, string> Handles { get; set; }
         public int CacheTime { get; set; }
         public Dictionary<string, string> CacheCondition { get; set; }
     }

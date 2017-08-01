@@ -55,9 +55,6 @@
       <HintPath>..\packages\Newtonsoft.Json.10.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="RabbitMQ.Client">
-      <HintPath>..\packages\Ucsmy.Usp.Api\RabbitMQ.Client.dll</HintPath>
-    </Reference>
     <Reference Include="RestSharp, Version=105.2.3.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\RestSharp.105.2.3\lib\net45\RestSharp.dll</HintPath>
       <Private>True</Private>
@@ -78,7 +75,7 @@
     <Reference Include="System.EnterpriseServices" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="Ucsmy.Usp.Api">
-      <HintPath>..\packages\Ucsmy.Usp.Api\Ucsmy.Usp.Api.dll</HintPath>
+      <HintPath>..\Libs\Ucsmy.Usp.Api.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
@@ -95,6 +92,7 @@
     <Compile Include="Common\HttpClient.cs" />
     <Compile Include="Common\LogHelper.cs" />
     <Compile Include="Common\RequestHead.cs" />
+    <Compile Include="Common\ResponseData.cs" />
     <Compile Include="Common\RouteData.cs" />
     <Compile Include="Common\RouteHelper.cs" />
     <Compile Include="Common\Settings.cs" />
@@ -122,6 +120,7 @@
     <Content Include="App_Data\p2p\user.json" />
     <Content Include="App_Data\p2p\verification.json" />
     <Content Include="App_Data\pluscoupon.json" />
+    <Content Include="App_Data\multiplerequest.json" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
