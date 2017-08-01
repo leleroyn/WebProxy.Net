@@ -14,3 +14,4 @@
 
 2017-7-31 代理配置支持多文件
 
+2017-8-1 实现Single Command --Multiple Request 模式
