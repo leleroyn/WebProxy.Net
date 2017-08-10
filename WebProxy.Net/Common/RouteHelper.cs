@@ -49,11 +49,13 @@ namespace WebProxy.Common
         /// <summary>
         /// 获取最优路由
         /// </summary>
-        /// <param name="head"></param>
+        /// <param name="command"></param>
+        /// <param name="version"></param>
+        /// <param name="system"></param>
         /// <returns></returns>
-        public static RouteData GetOptimalRoute(RequestHead head)
+        public static RouteData GetOptimalRoute(string command,string version,string system)
         {
-            var routes = RouteDatas.FirstOrDefault(x => string.Equals(x.Key, head.Command, StringComparison.OrdinalIgnoreCase));
+            var routes = RouteDatas.FirstOrDefault(x => string.Equals(x.Key, command, StringComparison.OrdinalIgnoreCase));
             if (routes.Value == null)
                 return null;
 
@@ -63,13 +65,13 @@ namespace WebProxy.Common
             IEnumerable<RouteData> routeList = routes.Value;
 
             List<Expression<Func<RouteData, bool>>> expressions = new List<Expression<Func<RouteData, bool>>>();
-            if (!string.IsNullOrEmpty(head.Version))
+            if (!string.IsNullOrEmpty(version))
             {
-                expressions.Add(x => x.Version == head.Version);
+                expressions.Add(x => x.Version == version);
             }
-            if (!string.IsNullOrEmpty(head.System))
+            if (!string.IsNullOrEmpty(system))
             {
-                expressions.Add(x => string.Equals(x.System.ToString(), head.System, StringComparison.OrdinalIgnoreCase));
+                expressions.Add(x => string.Equals(x.System.ToString(), system, StringComparison.OrdinalIgnoreCase));
             }
 
             routeList = expressions.Aggregate(routeList, (current, item) => current.Where(item.Compile()));

@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.AccessControl;
 using System.Web;
 
 namespace WebProxy.Common
@@ -43,6 +44,10 @@ namespace WebProxy.Common
         /// <summary>
         /// 是否使用缓存
         /// </summary>
-        public string UseCache { get; set; }
+        public bool? UseCache { get; set; }
+        /// <summary>
+        /// 多命令请求类型（serial:同步；parallel:异步）
+        /// </summary>
+        public string MultiRequestType { get; set; }
     }
 }

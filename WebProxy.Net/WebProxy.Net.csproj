@@ -92,7 +92,6 @@
     <Compile Include="Common\HttpClient.cs" />
     <Compile Include="Common\LogHelper.cs" />
     <Compile Include="Common\RequestHead.cs" />
-    <Compile Include="Common\ResponseData.cs" />
     <Compile Include="Common\RouteData.cs" />
     <Compile Include="Common\RouteHelper.cs" />
     <Compile Include="Common\Settings.cs" />
@@ -120,7 +119,7 @@
     <Content Include="App_Data\p2p\user.json" />
     <Content Include="App_Data\p2p\verification.json" />
     <Content Include="App_Data\pluscoupon.json" />
-    <Content Include="App_Data\multiplerequest.json" />
+    <Content Include="App_Data\mapi.json" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

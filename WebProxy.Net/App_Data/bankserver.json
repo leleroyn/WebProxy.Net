@@ -19,5 +19,30 @@
     "Name": "网关支付签名",
     "Command": "BankServer.GatewayPaySign",
     "Handle": "http://xcbankservice.ucsmy.com/bs/BankServer/GatewayPaySign"
+  },
+  {
+    "Name": "推送项目信息",
+    "Command": "BankServer.PushProject",
+    "Handle": "http://xcbankservice.ucsmy.com/bs/BankServer/PushProject"
+  },
+  {
+    "Name": "流标退款",
+    "Command": "BankServer.FailRefund",
+    "Handle": "http://xcbankservice.ucsmy.com/bs/BankServer/FailRefund"
+  },
+  {
+    "Name": "划账",
+    "Command": "BankServer.Transfer",
+    "Handle": "http://xcbankservice.ucsmy.com/bs/BankServer/Transfer"
+  },
+  {
+    "Name": "结算",
+    "Command": "BankServer.Settlement",
+    "Handle": "http://xcbankservice.ucsmy.com/bs/BankServer/Settlement"
+  },
+  {
+    "Name": "退款",
+    "Command": "BankServer.Refund",
+    "Handle": "http://xcbankservice.ucsmy.com/bs/BankServer/Refund"
   }
 ]

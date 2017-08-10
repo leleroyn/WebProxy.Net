@@ -35,16 +35,10 @@ namespace WebProxy.Common
 
             //string originalKey = WebDesKeys[key.ToLower()];
             //string md5 = EncryptHelper.GetMd5Hash(originalKey);
-
             //return md5.Substring(0, 8);
         }
 
         #endregion //验签密钥
-
-        /// <summary>
-        /// 忽略读取缓存的渠道
-        /// </summary>
-        public static string[] IgnoreCacheChannel = (ConfigurationManager.AppSettings["ignoreCacheChannel"].ToLower() ?? "").Split(',');
 
         /// <summary>
         /// 是否忽略日志
@@ -57,6 +51,21 @@ namespace WebProxy.Common
             if (string.IsNullOrWhiteSpace(ignoreLogChannel))
                 return false;
             return ignoreLogChannel.Split(',').Any(o => o.Equals(channel, StringComparison.OrdinalIgnoreCase));
+        }
+
+        /// <summary>
+        /// 是否忽略缓存
+        /// </summary>
+        /// <returns></returns>
+        public static bool IgnoreCacheChannel(string channel)
+        {
+            string[] ignoreCacheChannel = (ConfigurationManager.AppSettings["ignoreCacheChannel"].ToLower() ?? "").Split(',');
+
+            if (!string.IsNullOrEmpty(channel)
+                && !ignoreCacheChannel.Contains(channel.ToLower()))
+                return false;
+
+            return true;
         }
 
         /// <summary>

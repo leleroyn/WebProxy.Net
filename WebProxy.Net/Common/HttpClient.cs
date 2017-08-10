@@ -15,42 +15,6 @@ namespace WebProxy.Common
 {
     public static class HttpClient
     {
-        public static async Task<string> PostAsync(Dictionary<string, string> handles, RequestHead head, Dictionary<string, object> body)
-        {
-            Dictionary<string, Task> requestDic = new Dictionary<string, Task>();
-            foreach (var handle in handles)
-            {
-                var name = handle.Key;
-                var url = handle.Value;
-
-                RestRequest request = CreateRestRequest(head, body);
-                var client = new RestClient(url)
-                {
-                    Proxy = null,
-                    CookieContainer = null,
-                    FollowRedirects = false,
-                    Timeout = 60000
-                };
-
-                Task<IRestResponse> task = client.ExecuteTaskAsync(request);
-
-                requestDic.Add(name, task);
-            }
-
-            var taskList = requestDic.Select(x => x.Value).ToArray();
-            await Task.WhenAll(taskList);
-
-            var responseDatas = requestDic.Select(x => new ResponseData() { Name = x.Key, Content = ((Task<IRestResponse>)x.Value).Result.Content });
-            //单请求直接返回请求内容，多请求返回name-content的数组
-            if (responseDatas.Count() == 1)
-            {
-                return JsonConvert.SerializeObject(responseDatas.First().Content);
-            }
-
-            return JsonConvert.SerializeObject(responseDatas);
-        }
-
-
         public static async Task<string> PostAsync(string url, RequestHead head, Dictionary<string, object> body)
         {
             RestRequest request = CreateRestRequest(head, body);
