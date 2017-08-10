@@ -37,7 +37,6 @@ namespace WebProxy.Common
             headData.SerialNumber = head.SerialNumber;
             headData.Channel = head.Channel;
             headData.RequestHost = head.RequestHost;
-            //channel: web,wap,app,cache
             headData.RequestTime = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
             headData.UserId = head.UserId;
 

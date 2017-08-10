@@ -11,19 +11,6 @@ namespace WebProxy.Common
 {
     public static class Settings
     {
-        #region 验签密钥
-
-        /// <summary>
-        /// 验签密钥配置
-        /// </summary>
-        public static NameValueCollection WebDesKeys
-        {
-            get
-            {
-                return (NameValueCollection)ConfigurationManager.GetSection("webDesKey");
-            }
-        }
-
         /// <summary>
         /// 获取验签密钥
         /// </summary>
@@ -31,14 +18,14 @@ namespace WebProxy.Common
         /// <returns></returns>
         public static string GetDesKey(string key)
         {
-            return WebDesKeys[key.ToLower()];
+            NameValueCollection webDesKeys = (NameValueCollection)ConfigurationManager.GetSection("webDesKey");
+
+            return webDesKeys[key.ToLower()];
 
             //string originalKey = WebDesKeys[key.ToLower()];
             //string md5 = EncryptHelper.GetMd5Hash(originalKey);
             //return md5.Substring(0, 8);
         }
-
-        #endregion //验签密钥
 
         /// <summary>
         /// 是否忽略日志
@@ -72,5 +59,10 @@ namespace WebProxy.Common
         /// 程序根目录
         /// </summary>
         public static string RootPath { get; set; }
+
+        /// <summary>
+        /// 多指令请求分隔字符
+        /// </summary>
+        public static char MultiCommandSplitChar = '|';
     }
 }

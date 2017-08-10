@@ -22,7 +22,7 @@ namespace WebProxy.Modules
 
             Post["/Test"] = _ =>
             {
-                //Get Data
+                //- Get Data
                 RequestHead head = new RequestHead();
                 head.Command = Request.Form["command"];
                 head.Version = Request.Form["version"];
@@ -44,7 +44,7 @@ namespace WebProxy.Modules
 
                 string url = Request.Url.SiteBase + "/Api";
 
-                //-- Post
+                //- Post
                 RestClient client = new RestClient(url);
                 client.Proxy = null;
                 client.Timeout = 60000;
@@ -52,8 +52,28 @@ namespace WebProxy.Modules
                 request.AddHeader("head", headData);
                 request.AddParameter("body", encryptBody);
                 string result = client.Execute(request).Content;
+
+                //if (head.Command.Contains(Settings.MultiCommandSplitChar))
+                //{
+                //    string[] cmds = head.Command.Split(Settings.MultiCommandSplitChar);
+                //    Dictionary<string, ResponseMsg> responseDic = new Dictionary<string, ResponseMsg>();
+                //    foreach (var response in JsonConvert.DeserializeObject<Dictionary<string, string>>(result))
+                //    {
+                //        var val = JsonConvert.DeserializeObject<ResponseMsg>(response.Value);
+                //        responseDic.Add(response.Key, val);
+                //    }
+                //}
+
                 return result;
             };
         }
+
+        //public class ResponseMsg
+        //{
+        //    public string respCode { get; set; }
+        //    public string SN { get; set; }
+        //    public string respMsg { get; set; }
+        //    public Dictionary<string, object> respData { get; set; }
+        //}
     }
 }

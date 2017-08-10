@@ -25,9 +25,10 @@ namespace WebProxy
                 Settings.RootPath = RootPathProvider.GetRootPath();
             }
 
-            // 默认情况下，nancy在tojson时将对json key进行大小写装换，保存大小写需设置RetainCasing为true
+            // 默认情况下，nancy在序列化时将对json key进行大小写装换，效果如下
             // Serialize: NotificationId->notificationId
             // Deserialize: notificationId->NotificationId
+            // 如需保存大小写，设置RetainCasing为true（默认为false）
             JsonSettings.RetainCasing = true;
 
             //初始化日志

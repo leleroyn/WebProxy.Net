@@ -17,7 +17,7 @@ namespace WebProxy.Modules
         protected RequestHead HeadData;
         protected List<Dictionary<string, object>> BodyData;
         protected Dictionary<string, RouteData> OptimalRoutes;
-        protected bool FinalUseCache = false;
+        protected bool FinalUseCache;
 
         public BaseModule()
         {
@@ -68,6 +68,14 @@ namespace WebProxy.Modules
             };
         }
 
+        /// <summary>
+        /// 校验是否启用缓存
+        /// </summary>
+        /// <param name="userCache">请求启用缓存字段</param>
+        /// <param name="channel">请求渠道</param>
+        /// <param name="route">最优路由</param>
+        /// <param name="body">请求参数</param>
+        /// <returns></returns>
         protected bool CheckUseCache(bool? userCache, string channel, RouteData route, Dictionary<string, object> body)
         {
             //启用缓存条件
@@ -97,8 +105,20 @@ namespace WebProxy.Modules
             return false;
         }
 
+        /// <summary>
+        /// 生成缓存Key
+        /// </summary>
+        /// <param name="command">请求命令</param>
+        /// <param name="version">请求版本</param>
+        /// <param name="system">请求系统</param>
+        /// <param name="route">最优路由</param>
+        /// <param name="body">请求参数</param>
+        /// <returns></returns>
         protected string GeneralCacheKey(string command, string version, string system, RouteData route, Dictionary<string, object> body)
         {
+            // 缓存key格式:
+            // home.banner_1.0.0_pc_condition1=value1_condition2=value2
+
             string key = string.Join("_", command, version, system);
             if (route.CacheCondition != null)
             {
@@ -123,14 +143,23 @@ namespace WebProxy.Modules
             return key.ToLower();
         }
 
+        /// <summary>
+        /// 请求处理
+        /// </summary>
+        /// <param name="command">请求指令</param>
+        /// <param name="head">请求报文头</param>
+        /// <param name="route">最优路由</param>
+        /// <param name="body">请求参数</param>
+        /// <returns></returns>
         protected async Task<string> HandleRequest(string command, RequestHead head, RouteData route, Dictionary<string, object> body)
         {
             string response;
-
+            // 根据请求参数判断是否启用缓存
+            // 启用-生成缓存KEY,并尝试读取缓存，成功则返回缓存值，失败则转发请求
+            // 不启用-转发请求
             bool isUseCache = CheckUseCache(head.UseCache, head.Channel, route, body);
             if (isUseCache)
             {
-                //根据请求参数生成缓存KEY,并尝试读取缓存
                 string key = GeneralCacheKey(command, head.Version, head.System, route, body);
                 var cacheValue = CacheHelper.Get(key);
                 if (cacheValue != null)
@@ -168,17 +197,21 @@ namespace WebProxy.Modules
             }
             head = Encoding.UTF8.GetString(EncodingHelper.Base64UrlDecode(head));
             HeadData = JsonConvert.DeserializeObject<RequestHead>(head);
+            if (HeadData == null)
+                throw new ArgumentNullException("head", "请求报文头数据不存在");
+            if (string.IsNullOrEmpty(HeadData.Command))
+                throw new ArgumentNullException("command", "请求报文头指令名称不能为空");
 
             //- Body
             var bodyForm = request.Form["body"];
-            if (bodyForm != null)
+            if (!string.IsNullOrWhiteSpace(bodyForm))
             {
                 string key = Settings.GetDesKey(HeadData.Channel);
                 bodyForm = EncryptHelper.DESDecrypt(bodyForm, key);
                 string bodyStr = Encoding.UTF8.GetString(EncodingHelper.Base64UrlDecode(bodyForm));
-                
-                //兼容旧版本
-                //body参数如果不是json数组装换为数组处理
+
+                // 兼容旧版本
+                // body参数如果不是json数组装换为数组处理
                 if (!bodyStr.StartsWith("[") && !bodyStr.EndsWith("]"))
                 {
                     bodyStr = string.Format("[{0}]", bodyStr);
@@ -187,13 +220,8 @@ namespace WebProxy.Modules
             }
 
             //- Route
-            if (HeadData == null)
-                throw new ArgumentNullException("head", "请求报文头数据不存在");
-            if (string.IsNullOrEmpty(HeadData.Command))
-                throw new ArgumentNullException("command", "请求报文头指令名称不能为空");
-
             Dictionary<string, RouteData> routeDatas = new Dictionary<string, RouteData>();
-            string[] cmds = HeadData.Command.Split('|');
+            string[] cmds = HeadData.Command.Split(Settings.MultiCommandSplitChar);
             foreach (var cmd in cmds)
             {
                 RouteData route = RouteHelper.GetOptimalRoute(cmd, HeadData.Version, HeadData.System);

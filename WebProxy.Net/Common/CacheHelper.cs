@@ -74,7 +74,7 @@ namespace WebProxy.Common
         /// <param name="dependencyFiles">依赖文件</param>
         public static void Set(string key, object value, string[] dependencyFiles = null)
         {
-            HttpRuntime.Cache.Insert(key, value, new CacheDependency(dependencyFiles));
+            Cache.Insert(key, value, new CacheDependency(dependencyFiles));
         }
     }
 }
