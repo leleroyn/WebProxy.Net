@@ -46,12 +46,10 @@ namespace WebProxy.Common
         /// <returns></returns>
         public static bool IgnoreCacheChannel(string channel)
         {
-            string[] ignoreCacheChannel = (ConfigurationManager.AppSettings["ignoreCacheChannel"].ToLower() ?? "").Split(',');
-
+            string[] ignoreCacheChannel = (ConfigurationManager.AppSettings["ignoreCacheChannel"] ?? "").ToLower().Split(',');
             if (!string.IsNullOrEmpty(channel)
                 && !ignoreCacheChannel.Contains(channel.ToLower()))
                 return false;
-
             return true;
         }
 

@@ -55,13 +55,14 @@
   {
     "Name": "平台数据统计",
     "Command": "Home.CumulativeAmount",
-    "Handle": "http://xcbankservice.ucsmy.com/p2p/Home/CumulativeAmount",
+    "Handle": "http://service.qp.ucsmy.com/p2p/Home/CumulativeAmount",
     "CacheTime": 30
   },
   {
     "Name": "最新投资记录",
     "Command": "Home.InvestmentRecord",
-    "Handle": "http://xcbankservice.ucsmy.com/p2p/Home/InvestmentRecord",
+    //"Handle": "http://xcbankservice.ucsmy.com/p2p/Home/InvestmentRecord",
+    "Handle": "http://qp.ucsmy.com/p2p/Home/InvestmentRecord",
     "CacheTime": 10
   },
   {
