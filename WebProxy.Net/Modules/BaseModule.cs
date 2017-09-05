@@ -196,6 +196,7 @@ namespace WebProxy.Modules
                 throw new Exception("请求报文头数据不存在或格式不正确");
             }
             head = Encoding.UTF8.GetString(EncodingHelper.Base64UrlDecode(head));
+
             HeadData = JsonConvert.DeserializeObject<RequestHead>(head);
             if (HeadData == null)
                 throw new ArgumentNullException("head", "请求报文头数据不存在");
@@ -221,7 +222,14 @@ namespace WebProxy.Modules
 
             //- Route
             Dictionary<string, RouteData> routeDatas = new Dictionary<string, RouteData>();
-            string[] cmds = HeadData.Command.Split(Settings.MultiCommandSplitChar);
+            // 兼容旧版本
+            // Command参数如果不是json数组装换为数组处理
+            if (!HeadData.Command.StartsWith("[") && !HeadData.Command.EndsWith("]"))
+            {
+                HeadData.Command = string.Format("[{0}]", HeadData.Command);
+            }
+            string[] cmds = JsonConvert.DeserializeObject<string[]>(HeadData.Command);
+
             foreach (var cmd in cmds)
             {
                 RouteData route = RouteHelper.GetOptimalRoute(cmd, HeadData.Version, HeadData.System);

@@ -57,10 +57,6 @@ namespace WebProxy.Common
         /// 程序根目录
         /// </summary>
         public static string RootPath { get; set; }
-
-        /// <summary>
-        /// 多指令请求分隔字符
-        /// </summary>
-        public static char MultiCommandSplitChar = '|';
+               
     }
 }
