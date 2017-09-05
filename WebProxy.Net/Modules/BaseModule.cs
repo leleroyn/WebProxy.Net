@@ -226,7 +226,7 @@ namespace WebProxy.Modules
             // Command参数如果不是json数组装换为数组处理
             if (!HeadData.Command.StartsWith("[") && !HeadData.Command.EndsWith("]"))
             {
-                HeadData.Command = string.Format("[{0}]", HeadData.Command);
+                HeadData.Command = string.Format("[\"{0}\"]", HeadData.Command);
             }
             string[] cmds = JsonConvert.DeserializeObject<string[]>(HeadData.Command);
 
