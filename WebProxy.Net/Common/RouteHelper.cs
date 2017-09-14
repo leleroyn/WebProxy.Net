@@ -6,6 +6,8 @@ using System.Linq.Expressions;
 using System.Web;
 using System.Web.Caching;
 using Newtonsoft.Json;
+using System.Web.Routing;
+using WebProxy.Models;
 
 namespace WebProxy.Common
 {
@@ -14,21 +16,21 @@ namespace WebProxy.Common
         /// <summary>
         /// 获取路由配置
         /// </summary>        
-        public static Dictionary<string, List<RouteData>> RouteDatas
+        public static Dictionary<string, List<CustomRouteData>> RouteDatas
         {
             get
             {
-                var routeDic = HttpRuntime.Cache["route.json"] as Dictionary<string, List<RouteData>>;
+                var routeDic = HttpRuntime.Cache["route.json"] as Dictionary<string, List<CustomRouteData>>;
                 if (routeDic == null)
                 {
-                    var routePath = Path.Combine(Settings.RootPath, "App_Data");
+                    var routePath = Path.Combine(SettingsHelper.RootPath, "App_Data");
                     string[] files = Directory.GetFiles(routePath, "*.json", SearchOption.AllDirectories);
 
-                    routeDic = new Dictionary<string, List<RouteData>>();
+                    routeDic = new Dictionary<string, List<CustomRouteData>>();
                     foreach (var file in files)
                     {
                         var routeContent = File.ReadAllText(file);
-                        var routeSet = JsonConvert.DeserializeObject<List<RouteData>>(routeContent);
+                        var routeSet = JsonConvert.DeserializeObject<List<CustomRouteData>>(routeContent);
 
                         var singleDic = routeSet.GroupBy(o => o.Command).ToDictionary(
                               k => k.Key,
@@ -53,7 +55,7 @@ namespace WebProxy.Common
         /// <param name="version"></param>
         /// <param name="system"></param>
         /// <returns></returns>
-        public static RouteData GetOptimalRoute(string command,string version,string system)
+        public static CustomRouteData GetOptimalRoute(string command,string version,string system)
         {
             var routes = RouteDatas.FirstOrDefault(x => string.Equals(x.Key, command, StringComparison.OrdinalIgnoreCase));
             if (routes.Value == null)
@@ -62,9 +64,9 @@ namespace WebProxy.Common
             if (routes.Value.Count == 1)
                 return routes.Value.First();
 
-            IEnumerable<RouteData> routeList = routes.Value;
+            IEnumerable<CustomRouteData> routeList = routes.Value;
 
-            List<Expression<Func<RouteData, bool>>> expressions = new List<Expression<Func<RouteData, bool>>>();
+            List<Expression<Func<CustomRouteData, bool>>> expressions = new List<Expression<Func<CustomRouteData, bool>>>();
             if (!string.IsNullOrEmpty(version))
             {
                 expressions.Add(x => x.Version == version);

@@ -81,7 +81,8 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Api.config" />
-    <Content Include="App_Data\readme.txt" />
+    <Content Include="App_Data\route\readme.txt" />
+    <None Include="App_Data\servicehost\hosts.json" />
     <Content Include="Views\Test.html" />
     <Content Include="Web.config" />
   </ItemGroup>
@@ -92,10 +93,13 @@
     <Compile Include="Common\EncryptHelper.cs" />
     <Compile Include="Common\HttpClient.cs" />
     <Compile Include="Common\LogHelper.cs" />
-    <Compile Include="Common\RequestHead.cs" />
-    <Compile Include="Common\RouteData.cs" />
+    <Compile Include="Common\RandomHelper.cs" />
+    <Compile Include="Models\MicroServiceRandomObject.cs" />
+    <Compile Include="Models\RequestHead.cs" />
     <Compile Include="Common\RouteHelper.cs" />
-    <Compile Include="Common\Settings.cs" />
+    <Compile Include="Common\SettingsHelper.cs" />
+    <Compile Include="Models\RandomObject.cs" />
+    <Compile Include="Models\CustomRouteData.cs" />
     <Compile Include="Modules\BaseModule.cs" />
     <Compile Include="Modules\HelpModule.cs" />
     <Compile Include="Modules\HomeModule.cs" />
@@ -104,22 +108,9 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
-    <Content Include="App_Data\bankserver.json" />
-    <Content Include="App_Data\marketplatform.json" />
-    <Content Include="App_Data\p2p\app.json" />
-    <Content Include="App_Data\p2p\common.json" />
-    <Content Include="App_Data\p2p\finance.json" />
-    <Content Include="App_Data\p2p\financeoperate.json" />
-    <Content Include="App_Data\p2p\helpcenter.json" />
-    <Content Include="App_Data\p2p\home.json" />
-    <Content Include="App_Data\p2p\loan.json" />
-    <Content Include="App_Data\p2p\message.json" />
-    <Content Include="App_Data\p2p\my.json" />
-    <Content Include="App_Data\p2p\pay.json" />
-    <Content Include="App_Data\p2p\store.json" />
-    <Content Include="App_Data\p2p\user.json" />
-    <Content Include="App_Data\p2p\verification.json" />
-    <Content Include="App_Data\pluscoupon.json" />
+    <Content Include="App_Data\route\bankserver.json" />
+    <Content Include="App_Data\route\marketplatform.json" />
+    <Content Include="App_Data\route\pluscoupon.json" />
     <None Include="Properties\PublishProfiles\FolderProfile.pubxml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>

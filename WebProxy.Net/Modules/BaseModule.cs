@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using WebProxy.Common;
 using Nancy;
 using Newtonsoft.Json;
+using WebProxy.Models;
 
 namespace WebProxy.Modules
 {
@@ -16,7 +17,7 @@ namespace WebProxy.Modules
     {
         protected RequestHead HeadData;
         protected List<Dictionary<string, object>> BodyData;
-        protected Dictionary<string, RouteData> OptimalRoutes;
+        protected Dictionary<string, CustomRouteData> OptimalRoutes;
         protected bool FinalUseCache;
 
         public BaseModule()
@@ -25,8 +26,8 @@ namespace WebProxy.Modules
             bool ignoreLog = false;
             Before += ctx =>
             {
-                GetRequestData(ctx.Request);
-                ignoreLog = Settings.IgnoreLogChannel(HeadData.Channel);
+                OptimalRoutes = GetRequestData(ctx.Request);
+                ignoreLog = SettingsHelper.IgnoreLogChannel(HeadData.Channel);
                 return null;
             };
 
@@ -76,7 +77,7 @@ namespace WebProxy.Modules
         /// <param name="route">最优路由</param>
         /// <param name="body">请求参数</param>
         /// <returns></returns>
-        protected bool CheckUseCache(bool? userCache, string channel, RouteData route, Dictionary<string, object> body)
+        protected bool CheckUseCache(bool? userCache, string channel, CustomRouteData route, Dictionary<string, object> body)
         {
             //启用缓存条件
             //- 请求Head参数UserCache:true
@@ -90,7 +91,7 @@ namespace WebProxy.Modules
                 return false;
             if (route.CacheTime == 0)
                 return false;
-            if (Settings.IgnoreCacheChannel(channel))
+            if (SettingsHelper.IgnoreCacheChannel(channel))
                 return false;
 
             if (body == null && route.CacheCondition == null)
@@ -114,7 +115,7 @@ namespace WebProxy.Modules
         /// <param name="route">最优路由</param>
         /// <param name="body">请求参数</param>
         /// <returns></returns>
-        protected string GeneralCacheKey(string command, string version, string system, RouteData route, Dictionary<string, object> body)
+        protected string GeneralCacheKey(string command, string version, string system, CustomRouteData route, Dictionary<string, object> body)
         {
             // 缓存key格式:
             // home.banner_1.0.0_pc_condition1=value1_condition2=value2
@@ -151,7 +152,7 @@ namespace WebProxy.Modules
         /// <param name="route">最优路由</param>
         /// <param name="body">请求参数</param>
         /// <returns></returns>
-        protected async Task<string> HandleRequest(string command, RequestHead head, RouteData route, Dictionary<string, object> body)
+        protected async Task<string> HandleRequest(string command, RequestHead head, CustomRouteData route, Dictionary<string, object> body)
         {
             string response;
             // 根据请求参数判断是否启用缓存
@@ -187,7 +188,7 @@ namespace WebProxy.Modules
         /// <summary>
         /// 获取请求信息
         /// </summary>
-        private void GetRequestData(Request request)
+        private Dictionary<string, CustomRouteData> GetRequestData(Request request)
         {
             //- Head
             var head = request.Headers["head"].FirstOrDefault();
@@ -199,21 +200,21 @@ namespace WebProxy.Modules
 
             HeadData = JsonConvert.DeserializeObject<RequestHead>(head);
             if (HeadData == null)
-                throw new ArgumentNullException("head", "请求报文头数据不存在");
+                throw new Exception("请求报文头数据不存在");
             if (string.IsNullOrEmpty(HeadData.Command))
-                throw new ArgumentNullException("command", "请求报文头指令名称不能为空");
+                throw new Exception("请求报文头指令名称不能为空");
 
             //- Body
             var bodyForm = request.Form["body"];
             if (!string.IsNullOrWhiteSpace(bodyForm))
             {
-                string key = Settings.GetDesKey(HeadData.Channel);
+                string key = SettingsHelper.GetDesKey(HeadData.Channel);
                 bodyForm = EncryptHelper.DESDecrypt(bodyForm, key);
                 string bodyStr = Encoding.UTF8.GetString(EncodingHelper.Base64UrlDecode(bodyForm));
 
                 // 兼容旧版本
                 // body参数如果不是json数组装换为数组处理
-                if (!bodyStr.StartsWith("[") && !bodyStr.EndsWith("]"))
+                if (!bodyStr.StartsWith("[",StringComparison.OrdinalIgnoreCase) && !bodyStr.EndsWith("]", StringComparison.Ordinal))
                 {
                     bodyStr = string.Format("[{0}]", bodyStr);
                 }
@@ -221,10 +222,10 @@ namespace WebProxy.Modules
             }
 
             //- Route
-            Dictionary<string, RouteData> routeDatas = new Dictionary<string, RouteData>();
+            Dictionary<string, CustomRouteData> routeDatas = new Dictionary<string, CustomRouteData>();
             // 兼容旧版本
             // Command参数如果不是json数组装换为数组处理
-            if (!HeadData.Command.StartsWith("[") && !HeadData.Command.EndsWith("]"))
+            if (!HeadData.Command.StartsWith("[", StringComparison.Ordinal) && !HeadData.Command.EndsWith("]", StringComparison.Ordinal))
             {
                 HeadData.Command = string.Format("[\"{0}\"]", HeadData.Command);
             }
@@ -232,16 +233,16 @@ namespace WebProxy.Modules
 
             foreach (var cmd in cmds)
             {
-                RouteData route = RouteHelper.GetOptimalRoute(cmd, HeadData.Version, HeadData.System);
+                CustomRouteData route = RouteHelper.GetOptimalRoute(cmd, HeadData.Version, HeadData.System);
                 if (route == null)
-                    throw new ArgumentNullException("route", "请求路由不存在");
+                    throw new Exception("请求路由不存在");
 
                 routeDatas.Add(cmd, route);
             }
             if (BodyData != null && routeDatas.Count != BodyData.Count)
-                throw new ArgumentNullException("body", "请求路由body参数和command不符");
+                throw new Exception("请求路由body参数和command不符");
 
-            OptimalRoutes = routeDatas;
+            return routeDatas;
         }
     }
 }

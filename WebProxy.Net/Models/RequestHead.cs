@@ -5,7 +5,7 @@ using System.Linq;
 using System.Security.AccessControl;
 using System.Web;
 
-namespace WebProxy.Common
+namespace WebProxy.Models
 {
     public class RequestHead
     {

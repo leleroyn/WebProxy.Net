@@ -20,9 +20,9 @@ namespace WebProxy
         protected override void ApplicationStartup(TinyIoCContainer container, IPipelines pipelines)
         {
             base.ApplicationStartup(container, pipelines);
-            if (string.IsNullOrWhiteSpace(Settings.RootPath))
+            if (string.IsNullOrWhiteSpace(SettingsHelper.RootPath))
             {
-                Settings.RootPath = RootPathProvider.GetRootPath();
+                SettingsHelper.RootPath = RootPathProvider.GetRootPath();
             }
 
             // 默认情况下，nancy在序列化时将对json key进行大小写装换，效果如下

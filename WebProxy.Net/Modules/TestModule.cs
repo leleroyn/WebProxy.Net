@@ -8,6 +8,7 @@ using WebProxy.Common;
 using Nancy;
 using Newtonsoft.Json;
 using RestSharp;
+using WebProxy.Models;
 
 namespace WebProxy.Modules
 {
@@ -40,7 +41,7 @@ namespace WebProxy.Modules
 
                 string bodyData = Request.Form["body"];
                 bodyData = EncodingHelper.Base64UrlEncode(Encoding.UTF8.GetBytes(bodyData));
-                string encryptBody = EncryptHelper.DESEncrypt(bodyData, Settings.GetDesKey(head.Channel));
+                string encryptBody = EncryptHelper.DESEncrypt(bodyData, SettingsHelper.GetDesKey(head.Channel));
 
                 string url = Request.Url.SiteBase + "/Api";
 

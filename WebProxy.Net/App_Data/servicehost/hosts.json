@@ -1,0 +1,41 @@
+﻿[
+  {
+    "Name": "p2p",
+    "hosts": [
+      {
+        "ServiceUrl": "http://xcbankservice10.ucsmy.com/p2p/",
+        "Weight": 40
+      },
+      {
+        "ServiceUrl": "http://xcbankservice11.ucsmy.com/p2p/",
+        "Weight": 60
+      }
+    ]
+  },
+  {
+    "Name": "borrow",
+    "hosts": [
+      {
+        "ServiceUrl": "http://xcbankservice1.ucsmy.com/borrow/",
+        "Weight": 40
+      },
+      {
+        "ServiceUrl": "http://xcbankservice2.ucsmy.com/borrow/",
+        "Weight": 60
+      }
+    ]
+  },
+  {
+    "Name": "PlusCoupon",
+    "hosts": [
+      {
+        "ServiceUrl": "http://xcbankservice1.ucsmy.com/PlusCoupon/",
+        "Weight": 30
+      },
+      {
+        "ServiceUrl": "http://xcbankservice2.ucsmy.com/PlusCoupon/",
+        "Weight": 70
+      }
+    ]
+  }
+]

@@ -9,7 +9,7 @@ using System.Web;
 
 namespace WebProxy.Common
 {
-    public static class Settings
+    public static class SettingsHelper
     {
         /// <summary>
         /// 获取验签密钥
