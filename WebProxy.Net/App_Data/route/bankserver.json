@@ -3,46 +3,46 @@
   {
     "Name": "绑卡",
     "Command": "BankServer.BindCard",
-    "Handle": "http://xcbankservice.ucsmy.com/bs/BankServer/BindCard"
+    "Handle": "${bankserver}/BankServer/BindCard"
   },
   {
     "Name": "解绑",
     "Command": "BankServer.UnBindCard",
-    "Handle": "http://xcbankservice.ucsmy.com/bs/BankServer/UnBindCard"
+    "Handle": "${bankserver}/BankServer/UnBindCard"
   },
   {
     "Name": "解析网关支付同步通知返回报文",
     "Command": "BankCallBack.GatewayPayAnalysis",
-    "Handle": "http://xcbankservice.ucsmy.com/bs/BankCallBack/GatewayPayAnalysis"
+    "Handle": "${bankserver}/BankCallBack/GatewayPayAnalysis"
   },
   {
     "Name": "网关支付签名",
     "Command": "BankServer.GatewayPaySign",
-    "Handle": "http://xcbankservice.ucsmy.com/bs/BankServer/GatewayPaySign"
+    "Handle": "${bankserver}/BankServer/GatewayPaySign"
   },
   {
     "Name": "推送项目信息",
     "Command": "BankServer.PushProject",
-    "Handle": "${p2p}/bs/BankServer/PushProject"
+    "Handle": "${bankserver}/BankServer/PushProject"
   },
   {
     "Name": "流标退款",
     "Command": "BankServer.FailRefund",
-    "Handle": "http://xcbankservice.ucsmy.com/bs/BankServer/FailRefund"
+    "Handle": "${bankserver}/BankServer/FailRefund"
   },
   {
     "Name": "划账",
     "Command": "BankServer.Transfer",
-    "Handle": "http://xcbankservice.ucsmy.com/bs/BankServer/Transfer"
+    "Handle": "${bankserver}/BankServer/Transfer"
   },
   {
     "Name": "结算",
     "Command": "BankServer.Settlement",
-    "Handle": "http://xcbankservice.ucsmy.com/bs/BankServer/Settlement"
+    "Handle": "${bankserver}/BankServer/Settlement"
   },
   {
     "Name": "退款",
     "Command": "BankServer.Refund",
-    "Handle": "http://xcbankservice.ucsmy.com/bs/BankServer/Refund"
+    "Handle": "${bankserver}/BankServer/Refund"
   }
 ]

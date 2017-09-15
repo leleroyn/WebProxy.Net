@@ -3,11 +3,11 @@
   {
     "Name": "获取加息券列表",
     "Command": "PlusCoupon.PlusCouponList",
-    "Handle": "http://xcbankservice.ucsmy.com/PlusCoupon/PlusCoupon/PlusCouponList"
+    "Handle": "${pluscoupon}/PlusCouponList"
   },
   {
     "Name": "获取加息券列表",
     "Command": "PlusCoupon.PlusCouponListPage",
-    "Handle": "http://xcbankservice.ucsmy.com/PlusCoupon/PlusCoupon/PlusCouponListPage"
+    "Handle": "${pluscoupon}/PlusCouponListPage"
   }
 ]

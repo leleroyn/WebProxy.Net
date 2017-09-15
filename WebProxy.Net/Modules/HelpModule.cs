@@ -16,7 +16,7 @@ namespace WebProxy.Modules
 
             Get["/Help"] = _ =>
             {
-                var routeDic = RouteHelper.RouteDatas;
+                var routeDic = RouteHelper.GetRouteDatas();
                 return JsonConvert.SerializeObject(routeDic, Formatting.Indented);
             };
         }

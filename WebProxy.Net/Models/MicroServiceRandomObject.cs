@@ -5,7 +5,7 @@ using System.Web;
 
 namespace WebProxy.Models
 {
-    public class MicroServiceRandomObject:RandomObject
+    public class MicroServiceRandomObject : RandomObject
     {
         /// <summary>
         /// 微服务提供地址

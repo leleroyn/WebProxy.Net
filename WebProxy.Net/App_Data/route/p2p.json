@@ -1,0 +1,39 @@
+[
+  {
+    "Name": "首页Banner图",
+    "Command": "Home.Banner",
+    "Handle": "${p2p}/Home/Banner"
+  },
+  {
+    "Name": "项目查询New",
+    "Command": "Finance.FinanceListNew",
+    "Handle": "${p2p}/Finance/FinanceListNew"
+  },
+  {
+    "Name": "项目明细信息",
+    "Command": "Finance.FinanceDetail",
+    "Handle": "${p2p}/Finance/FinanceDetail"
+  },
+
+  {
+    "Name": "项目投资记录",
+    "Command": "Finance.InvestmentRecord",
+    "Handle": "${p2p}/Finance/InvestmentRecord"
+  },
+  {
+    "Name": "支付项目明细信息",
+    "Command": "Finance.PayFinanceDetail",
+    "Handle": "${p2p}/Finance/PayFinanceDetail"
+  },
+
+  {
+    "Name": "验证项目专属码是正确",
+    "Command": "Finance.ValidationExclusiveCode",
+    "Handle": "${p2p}/Finance/ValidationExclusiveCode"
+  },
+  {
+    "Name": "校验是否可以购买项目",
+    "Command": "Finance.PayVerify",
+    "Handle": "${p2p}/Finance/PayVerify"
+  }
+]

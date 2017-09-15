@@ -214,7 +214,7 @@ namespace WebProxy.Modules
 
                 // 兼容旧版本
                 // body参数如果不是json数组装换为数组处理
-                if (!bodyStr.StartsWith("[",StringComparison.OrdinalIgnoreCase) && !bodyStr.EndsWith("]", StringComparison.Ordinal))
+                if (!bodyStr.StartsWith("[", StringComparison.OrdinalIgnoreCase) && !bodyStr.EndsWith("]", StringComparison.OrdinalIgnoreCase))
                 {
                     bodyStr = string.Format("[{0}]", bodyStr);
                 }
@@ -225,7 +225,7 @@ namespace WebProxy.Modules
             Dictionary<string, CustomRouteData> routeDatas = new Dictionary<string, CustomRouteData>();
             // 兼容旧版本
             // Command参数如果不是json数组装换为数组处理
-            if (!HeadData.Command.StartsWith("[", StringComparison.Ordinal) && !HeadData.Command.EndsWith("]", StringComparison.Ordinal))
+            if (!HeadData.Command.StartsWith("[", StringComparison.OrdinalIgnoreCase) && !HeadData.Command.EndsWith("]", StringComparison.OrdinalIgnoreCase))
             {
                 HeadData.Command = string.Format("[\"{0}\"]", HeadData.Command);
             }
@@ -241,6 +241,9 @@ namespace WebProxy.Modules
             }
             if (BodyData != null && routeDatas.Count != BodyData.Count)
                 throw new Exception("请求路由body参数和command不符");
+
+            //路由负载
+            routeDatas = RouteHelper.RoutingLoadBalance(routeDatas);
 
             return routeDatas;
         }

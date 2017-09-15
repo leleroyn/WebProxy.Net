@@ -82,9 +82,13 @@
   <ItemGroup>
     <Content Include="Api.config" />
     <Content Include="App_Data\route\readme.txt" />
+    <Content Include="App_Data\route\p2p.json" />
     <None Include="App_Data\servicehost\hosts.json" />
+    <Content Include="App_Data\servicehost\readme.txt" />
     <Content Include="Views\Test.html" />
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Bootstrapper.cs" />
@@ -100,6 +104,7 @@
     <Compile Include="Common\SettingsHelper.cs" />
     <Compile Include="Models\RandomObject.cs" />
     <Compile Include="Models\CustomRouteData.cs" />
+    <Compile Include="Models\ServiceHostData.cs" />
     <Compile Include="Modules\BaseModule.cs" />
     <Compile Include="Modules\HelpModule.cs" />
     <Compile Include="Modules\HomeModule.cs" />
