@@ -80,7 +80,7 @@ namespace WebProxy.Modules
         /// <param name="body">请求参数</param>
         /// <returns></returns>
         protected bool CheckUseCache(bool? userCache, string channel, CustomRouteData route, Dictionary<string, object> body)
-        {
+        {           
             //启用缓存条件
             //- 请求Head参数UserCache:true
             //- 路由缓存时间配置大于0
@@ -99,11 +99,21 @@ namespace WebProxy.Modules
             if (body == null && route.CacheCondition == null)
                 return true;
 
-            if (body != null
-                && route.CacheCondition != null
-                && body.Count(x => x.Value != null && route.CacheCondition.Keys.Contains(x.Key, StringComparer.OrdinalIgnoreCase)) == route.CacheCondition.Count(
-                     x => body.Any(z => string.Equals(z.Key, x.Key, StringComparison.OrdinalIgnoreCase)) && x.Value.Contains(body.First(y => string.Equals(y.Key, x.Key, StringComparison.OrdinalIgnoreCase)).Value.ToString())))
-                return true;
+            List<Tuple<string, bool>> parms = new List<Tuple<string,bool>>();
+            foreach (var p in body)
+            {
+                if (p.Value != null)
+                {
+                    string cValue = string.Empty;
+                    if (!route.CacheCondition.TryGetValue(p.Key, out cValue))
+                    {
+                        cValue = string.Empty;
+                    }
+                    var parm = Tuple.Create(p.Key, cValue.Split(',').Contains(p.Value.ToString()));
+                    parms.Add(parm);
+                }
+            }
+            if (parms.Count(o => o.Item2 == true) == parms.Count) return true;
 
             return false;
         }
@@ -160,7 +170,7 @@ namespace WebProxy.Modules
             // 根据请求参数判断是否启用缓存
             // 启用-生成缓存KEY,并尝试读取缓存，成功则返回缓存值，失败则转发请求
             // 不启用-转发请求
-            bool isUseCache = CheckUseCache(head.UseCache, head.Channel, route, body);    
+            bool isUseCache = CheckUseCache(head.UseCache, head.Channel, route, body);
             if (isUseCache)
             {
                 string key = GeneralCacheKey(command, head.Version, head.System, route, body);
