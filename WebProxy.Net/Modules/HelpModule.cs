@@ -13,12 +13,6 @@ namespace WebProxy.Modules
             {
                 return string.Format("Server Time:{0}", DateTime.Now);
             };
-
-            Get["/Help"] = _ =>
-            {
-                var routeDic = RouteHelper.GetRouteDatas();
-                return JsonConvert.SerializeObject(routeDic, Formatting.Indented);
-            };
         }
     }
 }

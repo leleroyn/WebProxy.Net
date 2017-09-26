@@ -1,0 +1,44 @@
+﻿[ //-- 基本验证信息--
+  {
+    "Name": "验证用户是否绑定银行卡/身份证已被占用",
+    "Command": "Verification.BankCardOrIdCard",
+    "Handle": "Verification/BankCardOrIdCard",
+    "MicroService": "p2p"
+  },
+  {
+    "Name": "验证用户是否绑定银行卡",
+    "Command": "Verification.IsBindCard",
+    "Handle": "Verification/IsBindCard",
+    "MicroService": "p2p"
+  },
+  {
+    "Name": "App找回支付密码验证身份信息",
+    "Command": "Verification.CheckBankInfo",
+    "Handle": "Verification/CheckBankInfo",
+    "MicroService": "p2p"
+  },
+  {
+    "Name": "验证用户支付密码是否正确",
+    "Command": "Verification.PayPwdIsRight",
+    "Handle": "Verification/PayPwdIsRight",
+    "MicroService": "p2p"
+  },
+  {
+    "Name": "验证用户登录密码是否正确",
+    "Command": "Verification.LoginPwdIsRight",
+    "Handle": "Verification/LoginPwdIsRight",
+    "MicroService": "p2p"
+  },
+  {
+    "Name": "验证用户信息是否正确",
+    "Command": "Verification.UserIndoIsRight",
+    "Handle": "Verification/UserIndoIsRight",
+    "MicroService": "p2p"
+  },
+  {
+    "Name": "验证用户电话号码能否通过",
+    "Command": "Verification.VerificationMobile",
+    "Handle": "Verification/VerificationMobile",
+    "MicroService": "p2p"
+  }
+]

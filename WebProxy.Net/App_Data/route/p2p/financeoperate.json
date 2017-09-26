@@ -1,0 +1,55 @@
+﻿[ //-- 银行卡相关--
+  {
+    "Name": "获取省份列表",
+    "Command": "FinanceOperate.GetProvinceList",
+    "Handle": "FinanceOperate/GetProvinceList",
+    "CacheTime": 10,
+    "MicroService": "p2p"
+  },
+  {
+    "Name": "获取市列表信息",
+    "Command": "FinanceOperate.GetCityList",
+    "Handle": "FinanceOperate/GetCityList",
+    "CacheTime": 30,
+    "MicroService": "p2p"
+  },
+  {
+    "Name": "获取支行列表信息",
+    "Command": "FinanceOperate.GetBankBranchList",
+    "Handle": "FinanceOperate/GetBankBranchList",
+    "CacheTime": 30,
+    "MicroService": "p2p"
+  },
+  {
+    "Name": "银行卡列表",
+    "Command": "FinanceOperate.BankCardList",
+    "Handle": "FinanceOperate/BankCardList",
+    "CacheTime": 30,
+    "MicroService": "p2p"
+  },
+  {
+    "Name": "支持的银行列表",
+    "Command": "FinanceOperate.BankOfSupportList",
+    "Handle": "FinanceOperate/BankOfSupportList",
+    "CacheTime": 30,
+    "MicroService": "p2p"
+  },
+  {
+    "Name": "绑卡验证",
+    "Command": "FinanceOperate.ValidateBindCardInfo",
+    "Handle": "FinanceOperate/ValidateBindCardInfo",
+    "MicroService": "p2p"
+  },
+  {
+    "Name": "解绑时验证银行卡是否存在处理中的订单。以及未回款的订单",
+    "Command": "FinanceOperate.BankCardOrderStatus",
+    "Handle": "FinanceOperate/BankCardOrderStatus",
+    "MicroService": "p2p"
+  },
+  {
+    "Name": "企业账户绑卡",
+    "Command": "FinanceOperate.BindingCard4EnterpriseUser",
+    "Handle": "FinanceOperate/BindingCard4EnterpriseUser",
+    "MicroService": "p2p"
+  }
+]

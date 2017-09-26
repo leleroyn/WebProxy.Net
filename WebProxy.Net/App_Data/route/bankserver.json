@@ -1,48 +1,57 @@
-[
+﻿[
   //-- 银行接口
   {
     "Name": "绑卡",
     "Command": "BankServer.BindCard",
-    "Handle": "${bankserver}/BankServer/BindCard"
+    "Handle": "BankServer/BindCard",
+    "MicroService": "bankserver"
   },
   {
     "Name": "解绑",
     "Command": "BankServer.UnBindCard",
-    "Handle": "${bankserver}/BankServer/UnBindCard"
+    "Handle": "BankServer/UnBindCard",
+    "MicroService": "bankserver"
   },
   {
     "Name": "解析网关支付同步通知返回报文",
     "Command": "BankCallBack.GatewayPayAnalysis",
-    "Handle": "${bankserver}/BankCallBack/GatewayPayAnalysis"
+    "Handle": "BankCallBack/GatewayPayAnalysis",
+    "MicroService": "bankserver"
   },
   {
     "Name": "网关支付签名",
     "Command": "BankServer.GatewayPaySign",
-    "Handle": "${bankserver}/BankServer/GatewayPaySign"
+    "Handle": "BankServer/GatewayPaySign",
+    "MicroService": "bankserver"
   },
   {
     "Name": "推送项目信息",
     "Command": "BankServer.PushProject",
-    "Handle": "${bankserver}/BankServer/PushProject"
+    "Handle": "BankServer/PushProject",
+    "MicroService": "bankserver"
   },
   {
     "Name": "流标退款",
     "Command": "BankServer.FailRefund",
-    "Handle": "${bankserver}/BankServer/FailRefund"
+    "Handle": "BankServer/FailRefund",
+    "MicroService": "bankserver"
   },
   {
     "Name": "划账",
     "Command": "BankServer.Transfer",
-    "Handle": "${bankserver}/BankServer/Transfer"
+    "Handle": "BankServer/Transfer",
+    "MicroService": "bankserver"
   },
   {
     "Name": "结算",
     "Command": "BankServer.Settlement",
-    "Handle": "${bankserver}/BankServer/Settlement"
+    "Handle": "BankServer/Settlement",
+    "MicroService": "bankserver"
   },
   {
     "Name": "退款",
     "Command": "BankServer.Refund",
-    "Handle": "${bankserver}/BankServer/Refund"
+    "Handle": "BankServer/Refund",
+    "MicroService": "bankserver"
   }
 ]

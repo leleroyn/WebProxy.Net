@@ -16,8 +16,8 @@ namespace WebProxy.Modules
     public class BaseModule : NancyModule
     {
         protected RequestHead HeadData;
-        protected List<Dictionary<string, object>> BodyData;
-        protected Dictionary<string, CustomRouteData> OptimalRoutes;
+        protected Dictionary<string, object> BodyData;
+        protected CustomRouteData OptimalRoute;
         protected bool FinalUseCache;
 
         public BaseModule()
@@ -26,7 +26,9 @@ namespace WebProxy.Modules
             bool ignoreLog = false;
             Before += ctx =>
             {
-                OptimalRoutes = GetRequestData(ctx.Request);
+                var route = GetRequestData(ctx.Request);
+                OptimalRoute = route;
+                HeadData.Authorization = RouteHelper.CreateToken(route);
                 ignoreLog = SettingsHelper.IgnoreLogChannel(HeadData.Channel);
                 return null;
             };
@@ -46,7 +48,7 @@ namespace WebProxy.Modules
                         string.Format(
                             "Route request successfully,Address:{0},Time:{1}(s),Head:{2},Body:{3},RouteData:{4},Response:{5},UseCache:{6}",
                             Request.Url, (DateTime.Now - elapsedTime).TotalSeconds, JsonConvert.SerializeObject(HeadData),
-                            JsonConvert.SerializeObject(BodyData), JsonConvert.SerializeObject(OptimalRoutes), response,
+                            JsonConvert.SerializeObject(BodyData), JsonConvert.SerializeObject(OptimalRoute), response,
                             FinalUseCache));
                 }
             };
@@ -56,11 +58,11 @@ namespace WebProxy.Modules
                 if (!ignoreLog)
                 {
                     LogHelper.Error(
-                        string.Format("Route request Error,Command[{0}]", HeadData == null ? "" : HeadData.Command),
+                        string.Format("Route request Error,Command{0}", HeadData == null ? "" : HeadData.Command),
                         string.Format(
                             "Route request error,Address:{0},End time:{1},Head:{2},Body:{3},RouteData:{4},Error Message:{5}",
                             Request.Url, DateTime.Now, JsonConvert.SerializeObject(HeadData), JsonConvert.SerializeObject(BodyData),
-                            JsonConvert.SerializeObject(OptimalRoutes), ex.Message), ex);
+                            JsonConvert.SerializeObject(OptimalRoute), ex.Message), ex);
                 }
                 dynamic response = new ExpandoObject();
                 response.Code = "500";
@@ -158,7 +160,7 @@ namespace WebProxy.Modules
             // 根据请求参数判断是否启用缓存
             // 启用-生成缓存KEY,并尝试读取缓存，成功则返回缓存值，失败则转发请求
             // 不启用-转发请求
-            bool isUseCache = CheckUseCache(head.UseCache, head.Channel, route, body);
+            bool isUseCache = CheckUseCache(head.UseCache, head.Channel, route, body);    
             if (isUseCache)
             {
                 string key = GeneralCacheKey(command, head.Version, head.System, route, body);
@@ -188,7 +190,7 @@ namespace WebProxy.Modules
         /// <summary>
         /// 获取请求信息
         /// </summary>
-        private Dictionary<string, CustomRouteData> GetRequestData(Request request)
+        private CustomRouteData GetRequestData(Request request)
         {
             //- Head
             var head = request.Headers["head"].FirstOrDefault();
@@ -197,13 +199,11 @@ namespace WebProxy.Modules
                 throw new Exception("请求报文头数据不存在或格式不正确");
             }
             head = Encoding.UTF8.GetString(EncodingHelper.Base64UrlDecode(head));
-
             HeadData = JsonConvert.DeserializeObject<RequestHead>(head);
             if (HeadData == null)
                 throw new Exception("请求报文头数据不存在");
             if (string.IsNullOrEmpty(HeadData.Command))
                 throw new Exception("请求报文头指令名称不能为空");
-
             //- Body
             var bodyForm = request.Form["body"];
             if (!string.IsNullOrWhiteSpace(bodyForm))
@@ -211,41 +211,16 @@ namespace WebProxy.Modules
                 string key = SettingsHelper.GetDesKey(HeadData.Channel);
                 bodyForm = EncryptHelper.DESDecrypt(bodyForm, key);
                 string bodyStr = Encoding.UTF8.GetString(EncodingHelper.Base64UrlDecode(bodyForm));
-
-                // 兼容旧版本
-                // body参数如果不是json数组装换为数组处理
-                if (!bodyStr.StartsWith("[", StringComparison.OrdinalIgnoreCase) && !bodyStr.EndsWith("]", StringComparison.OrdinalIgnoreCase))
-                {
-                    bodyStr = string.Format("[{0}]", bodyStr);
-                }
-                BodyData = JsonConvert.DeserializeObject<List<Dictionary<string, object>>>(bodyStr);
+                BodyData = JsonConvert.DeserializeObject<Dictionary<string, object>>(bodyStr);
             }
-
             //- Route
-            Dictionary<string, CustomRouteData> routeDatas = new Dictionary<string, CustomRouteData>();
-            // 兼容旧版本
-            // Command参数如果不是json数组装换为数组处理
-            if (!HeadData.Command.StartsWith("[", StringComparison.OrdinalIgnoreCase) && !HeadData.Command.EndsWith("]", StringComparison.OrdinalIgnoreCase))
-            {
-                HeadData.Command = string.Format("[\"{0}\"]", HeadData.Command);
-            }
-            string[] cmds = JsonConvert.DeserializeObject<string[]>(HeadData.Command);
+            CustomRouteData route = RouteHelper.GetOptimalRoute(HeadData.Command, HeadData.Version, HeadData.System);
+            if (route == null)
+                throw new Exception("请求路由不存在");
 
-            foreach (var cmd in cmds)
-            {
-                CustomRouteData route = RouteHelper.GetOptimalRoute(cmd, HeadData.Version, HeadData.System);
-                if (route == null)
-                    throw new Exception("请求路由不存在");
+            route = RouteHelper.RoutingLoadBalance(route);
 
-                routeDatas.Add(cmd, route);
-            }
-            if (BodyData != null && routeDatas.Count != BodyData.Count)
-                throw new Exception("请求路由body参数和command不符");
-
-            //路由负载
-            routeDatas = RouteHelper.RoutingLoadBalance(routeDatas);
-
-            return routeDatas;
+            return route;
         }
     }
 }

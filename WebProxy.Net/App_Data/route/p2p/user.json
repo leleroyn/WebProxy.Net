@@ -1,0 +1,188 @@
+﻿[ //-- 基本验证信息--
+  {
+    "Name": "验证当前用户名是否存在",
+    "Command": "User.UserIsExist",
+    "Handle": "User/UserIsExist",
+    "MicroService": "p2p"
+  },
+  {
+    "Name": "验证手机号是否存在",
+    "Command": "User.MobileIsExist",
+    "Handle": "User/MobileIsExist",
+    "MicroService": "p2p"
+  },
+  {
+    "Name": "验证邮箱是否存在",
+    "Command": "User.EmailIsExist",
+    "Handle": "User/EmailIsExist",
+    "MicroService": "p2p"
+  },
+  {
+    "Name": "根据用户id获取用户信息",
+    "Command": "User.GetUserByID",
+    "Handle": "User/GetUserByID",
+    "MicroService": "p2p"
+  },
+  {
+    "Name": "密码加密",
+    "Command": "User.PasswordHash",
+    "Handle": "User/PasswordHash",
+    "MicroService": "p2p"
+  },
+  {
+    "Name": "根据手机号码获取用户信息",
+    "Command": "User.GetUserByFilter",
+    "Handle": "User/GetUserByFilter",
+    "MicroService": "p2p"
+  },
+  {
+    "Name": "用户是否绑卡",
+    "Command": "User.IsBindCard",
+    "Handle": "User/IsBindCard",
+    "MicroService": "p2p"
+  },
+  {
+    "Name": "登陆",
+    "Command": "User.ValidateUser",
+    "Handle": "User/ValidateUser",
+    "MicroService": "p2p"
+  },
+  {
+    "Name": "注册",
+    "Command": "User.CreateAccount",
+    "Handle": "User/CreateAccount",
+    "MicroService": "p2p"
+  },
+  {
+    "Name": "忘记登录密码",
+    "Command": "User.ResetPassword",
+    "Handle": "User/ResetPassword",
+    "MicroService": "p2p"
+  },
+  {
+    "Name": "忘记交易密码",
+    "Command": "User.ResetTradingPassword",
+    "Handle": "User/ResetTradingPassword",
+    "MicroService": "p2p"
+  },
+  {
+    "Name": "忘记交易密码4App",
+    "Command": "User.ResetTradingPassword4App",
+    "Handle": "User/ResetTradingPassword4App",
+    "MicroService": "p2p"
+  },
+  {
+    "Name": "验证（忘记交易密码）真实姓名，身份证，手机号码",
+    "Command": "User.ValidateTradingPassword",
+    "Handle": "User/ValidateTradingPassword",
+    "MicroService": "p2p"
+  },
+  {
+    "Name": "修改登陆密码",
+    "Command": "User.ModifyPassword",
+    "Handle": "User/ModifyPassword",
+    "MicroService": "p2p"
+  },
+  {
+    "Name": "修改登陆密码4App",
+    "Command": "User.ModifyPassword4App",
+    "Handle": "User/ModifyPassword4App",
+    "MicroService": "p2p"
+  },
+  {
+    "Name": "修改交易密码",
+    "Command": "User.ModifyTradingPassword",
+    "Handle": "User/ModifyTradingPassword",
+    "MicroService": "p2p"
+  },
+  {
+    "Name": "修改交易密码4App",
+    "Command": "User.ModifyTradingPassword4App",
+    "Handle": "User/ModifyTradingPassword4App",
+    "MicroService": "p2p"
+  },
+  {
+    "Name": "用户是否有贷款项目",
+    "Command": "User.IsExistLoansProject",
+    "Handle": "User/IsExistLoansProject",
+    "MicroService": "p2p"
+  },
+  {
+    "Name": "当前证件号是否被使用",
+    "Command": "User.IsExistCertNo",
+    "Handle": "User/IsExistCertNo",
+    "MicroService": "p2p"
+  },
+  {
+    "Name": "用户是否是分行人员",
+    "Command": "User.IsBankUser",
+    "Handle": "User/IsBankUser",
+    "MicroService": "p2p"
+  },
+  {
+    "Name": "获取分行人员用户信息",
+    "Command": "User.BankUser",
+    "Handle": "User/BankUser",
+    "MicroService": "p2p"
+  },
+  {
+    "Name": "修改用户信息",
+    "Command": "User.ModifyUserInfo",
+    "Handle": "User/ModifyUserInfo",
+    "MicroService": "p2p"
+  },
+  {
+    "Name": "绑定或者修改邮箱",
+    "Command": "User.BindingOrModifyEmail",
+    "Handle": "User/BindingOrModifyEmail",
+    "MicroService": "p2p"
+  },
+  {
+    "Name": "修改手机号码",
+    "Command": "User.ModifyMobile",
+    "Handle": "User/ModifyMobile",
+    "MicroService": "p2p"
+  },
+  {
+    "Name": "获取用户上次登录时间",
+    "Command": "User.GetLastLoginDate",
+    "Handle": "User/GetLastLoginDate",
+    "MicroService": "p2p"
+  },
+  {
+    "Name": "更新唯一的IMEI(一个手机对应唯一一个IMEI)",
+    "Command": "User.UpdateUserIMEI",
+    "Handle": "User/UpdateUserIMEI",
+    "MicroService": "p2p"
+  },
+  {
+    "Name": "当前证件号是否被使用",
+    "Command": "User.IsExistCertNo",
+    "Handle": "User/IsExistCertNo",
+    "MicroService": "p2p"
+  },
+  {
+    "Name": "验证推荐码是否存在",
+    "Command": "User.ReFreeIsExist",
+    "Handle": "User/ReFreeIsExist",
+    "MicroService": "p2p"
+  },
+  {
+    "Name": "修改手机号(PC)",
+    "Command": "User.ModifyMobile4PC",
+    "Handle": "User/ModifyMobile4PC",
+    "MicroService": "p2p"
+  },
+  {
+    "Name": "获取用户新项目提醒开关信息",
+    "Command": "User.GetNewProjectRemind",
+    "Handle": "User/GetNewProjectRemind",
+    "MicroService": "p2p"
+  },
+  {
+    "Name": "设置用户新项目提醒开关信息",
+    "Command": "User.SetNewProjectRemind",
+    "Handle": "User/SetNewProjectRemind",
+    "MicroService": "p2p"
+  }
+]

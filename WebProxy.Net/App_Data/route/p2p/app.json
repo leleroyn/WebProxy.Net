@@ -1,0 +1,64 @@
+﻿[ //-- App云端--
+  {
+    "Name": "App云端换肤",
+    "Command": "Cloud.GetCloud",
+    "Handle": "Cloud/GetCloud",
+    "CacheTime": 30,
+    "MicroService": "p2p"
+  },
+  {
+    "Name": "App版本升级",
+    "Command": "Cloud.UpdateVersion",
+    "Handle": "Cloud/UpdateVersion",
+    "CacheTime": 30,
+    "MicroService": "p2p"
+  },
+  {
+    "Name": "获取最近回款订单信息 APP",
+    "Command": "App.RecentlyPaymentOrder",
+    "Handle": "App/RecentlyPaymentOrder",
+    "MicroService": "p2p"
+  },
+  {
+    "Name": "导航列表 APP",
+    "Command": "App.AppPageList",
+    "Handle": "App/AppPageList",
+    "MicroService": "p2p"
+  },
+  {
+    "Name": "获取用户邀请数据",
+    "Command": "App.GetMyInvitation",
+    "Handle": "App/GetMyInvitation",
+    "MicroService": "p2p"
+  },
+  {
+    "Name": "App获取最新下载地址",
+    "Command": "App.GetAppDownLoadUrl",
+    "Handle": "App/GetAppDownLoadUrl",
+    "MicroService": "p2p"
+  },
+  {
+    "Name": "获取最近回款订单信息",
+    "Command": "App.GatewayPaySign",
+    "Handle": "App/RecentlyPaymentOrder",
+    "MicroService": "p2p"
+  },
+  {
+    "Name": "获取APP H5页面",
+    "Command": "App.AppPageList",
+    "Handle": "App/AppPageList",
+    "MicroService": "p2p"
+  },
+  {
+    "Name": "获取邀请用户数据列表",
+    "Command": "App.GetMyInvitation",
+    "Handle": "App/GetMyInvitation",
+    "MicroService": "p2p"
+  },
+  {
+    "Name": "App获取最新下载地址",
+    "Command": "App.GetAppDownLoadUrl",
+    "Handle": "App/GetAppDownLoadUrl",
+    "MicroService": "p2p"
+  }
+]

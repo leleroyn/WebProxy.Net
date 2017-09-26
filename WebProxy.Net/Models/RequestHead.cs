@@ -44,10 +44,11 @@ namespace WebProxy.Models
         /// <summary>
         /// 是否使用缓存
         /// </summary>
-        public bool? UseCache { get; set; }
+        public bool? UseCache { get; set; }   
+        
         /// <summary>
-        /// 多命令请求类型（serial:同步；parallel:异步）
+        /// 路由发送给微服务的凭证
         /// </summary>
-        public string MultiRequestType { get; set; }    
+        public string Authorization { get; set; }
     }
 }

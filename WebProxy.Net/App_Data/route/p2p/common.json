@@ -1,0 +1,23 @@
+﻿[ //-- 系统基本配置--
+  {
+    "Name": "获取前台脚本和样式表版本号",
+    "Command": "Common.GetCssJsVersion",
+    "Handle": "Common/GetCssJsVersion",
+    "CacheTime": 30,
+    "MicroService": "p2p"
+  },
+  {
+    "Name": "获取平台名称",
+    "Command": "Common.GetPlatformName",
+    "Handle": "Common/GetPlatformName",
+    "CacheTime": 30,
+    "MicroService": "p2p"
+  },
+  {
+    "Name": "获取前台站点访问域名",
+    "Command": "Common.GetHomeDomain",
+    "Handle": "Common/GetHomeDomain",
+    "CacheTime": 30,
+    "MicroService": "p2p"
+  }
+]

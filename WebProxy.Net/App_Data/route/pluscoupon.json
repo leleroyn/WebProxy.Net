@@ -1,13 +1,21 @@
-[
+﻿[
   //-- 加息券
   {
     "Name": "获取加息券列表",
-    "Command": "PlusCoupon.PlusCouponList",
-    "Handle": "${pluscoupon}/PlusCouponList"
+    "Command": "PlusCoupon.PlusCouponListPage",
+    "Handle": "PlusCoupon/PlusCouponListPage",
+    "MicroService":"pluscoupon"
   },
   {
-    "Name": "获取加息券列表",
-    "Command": "PlusCoupon.PlusCouponListPage",
-    "Handle": "${pluscoupon}/PlusCouponListPage"
+    "Name": "创建订单",
+    "Command": "Pay.CreateOrder",
+    "Handle": "Pay/CreateOrder",
+    "MicroService":"pluscoupon"
+  },
+  {
+    "Name": "PC支付",
+    "Command": "Pay.Pay",
+    "Handle": "Pay/Pay",
+    "MicroService":"pluscoupon"
   }
 ]

@@ -1,49 +1,60 @@
 ﻿[
   {
     "Name": "p2p",
+    "ApplicationId": "p2p",
+    "ApplicationKey": "ucs2017",
     "Hosts": [
       {
-        "ServiceUrl": "http://xcbankservice.ucsmy.com/p2p",
-        "Weight": 20
+        "ServiceUrl": "http://xcbankservice.ucsmy.com/p2p/",
+        "Weight": 50
       },
       {
-        "ServiceUrl": "http://xcbankservice.ucsmy.com/p2p",
-        "Weight": 80
+        "ServiceUrl": "http://xcbankservice.ucsmy.com/p2p2/",
+        "Weight": 50
       }
     ]
   },
   {
     "Name": "marketplatform",
+    "ApplicationId": "marketplatform",
+    "ApplicationKey": "ucs2017",
     "Hosts": [
       {
-        "ServiceUrl": "http://bankservice.ucsmy.com/MarketPlatformApi1",
+        "ServiceUrl": "http://txcyxapi.ucsmy.com/MarketPlatformApi/",
         "Weight": 100
       }
     ]
   },
   {
     "Name": "pluscoupon",
+    "ApplicationId": "pluscoupon",
+    "ApplicationKey": "ucs2017",
     "Hosts": [
       {
-        "ServiceUrl": "http://bankservice.ucsmy.com/PlusCoupon1",
-        "Weight": 40
-      },
-      {
-        "ServiceUrl": "http://bankservice.ucsmy.com/PlusCoupon2",
-        "Weight": 60
+        "ServiceUrl": "http://xcbankservice.ucsmy.com/PlusCoupon/",
+        "Weight": 100
       }
     ]
   },
   {
     "Name": "bankserver",
+    "ApplicationId": "bankserver",
+    "ApplicationKey": "ucs2017",
     "Hosts": [
       {
-        "ServiceUrl": "http://bankservice.ucsmy.com/bankserver1",
-        "Weight": 50
-      },
+        "ServiceUrl": "http://xcbankservice.ucsmy.com/bs/",
+        "Weight": 100
+      }
+    ]
+  },
+  {
+    "Name": "managerapi",
+    "ApplicationId": "managerapi",
+    "ApplicationKey": "ucs2017",
+    "Hosts": [
       {
-        "ServiceUrl": "http://bankservice.ucsmy.com/bankserver2",
-        "Weight": 50
+        "ServiceUrl": "http://xcbankservice.ucsmy.com/mapi",
+        "Weight": 100
       }
     ]
   }

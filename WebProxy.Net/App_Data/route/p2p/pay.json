@@ -1,0 +1,65 @@
+﻿[
+  //--支付--
+  {
+    "Name": "获取当前系统支持的支持方式",
+    "Command": "Pay.PayTypeConfig",
+    "Handle": "Pay/PayTypeConfig",
+    "MicroService": "p2p"
+  },
+  {
+    "Name": "支付银行卡信息",
+    "Command": "Pay.PayBankCards",
+    "Handle": "Pay/PayBankCards",
+    "MicroService": "p2p"
+  },
+  {
+    "Name": "APP支付",
+    "Command": "Pay.PayOrder",
+    "Handle": "Pay/PayOrder",
+    "MicroService": "p2p"
+  },
+  {
+    "Name": "获取支持快捷支付的银行列表",
+    "Command": "Pay.BankOfSupportList",
+    "Handle": "Pay/BankOfSupportList",
+    "CacheTime": 30,
+    "MicroService": "p2p"
+  },
+  {
+    "Name": "中金支付结果异步回调通知",
+    "Command": "Pay.UcsFinanceCallBack",
+    "Handle": "Pay/UcsFinanceCallBack",
+    "MicroService": "p2p"
+  },
+
+  {
+    "Name": "中金网关支付结果同步回调通知",
+    "Command": "Pay.PayCallBack",
+    "Handle": "Pay/PayCallBack",
+    "MicroService": "p2p"
+  },
+  {
+    "Name": "中金制单后添加流水记录",
+    "Command": "Pay.CreateOrderRunning",
+    "Handle": "Pay/CreateOrderRunning",
+    "MicroService": "p2p"
+  },
+  {
+    "Name": "网关支付是否支付成功",
+    "Command": "Pay.IsPay",
+    "Handle": "Pay/IsPay",
+    "MicroService": "p2p"
+  },
+  {
+    "Name": "获取协议融资人信息",
+    "Command": "Finance.GetFinancier",
+    "Handle": "Finance/GetFinancier",
+    "MicroService": "p2p"
+  },
+  {
+    "Name": "补录银行卡的省市支行信息",
+    "Command": "Pay.UpdateBankCardInfo",
+    "Handle": "Pay/UpdateBankCardInfo",
+    "MicroService": "p2p"
+  }
+]

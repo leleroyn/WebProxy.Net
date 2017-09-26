@@ -1,0 +1,93 @@
+﻿[ //--消息--
+  {
+    "Name": "获取个人消息",
+    "Command": "My.Messages",
+    "Handle": "My/Messages",
+    "MicroService": "p2p"
+  },
+  {
+    "Name": "删除我的消息",
+    "Command": "My.DeleteMessage",
+    "Handle": "My/DeleteMessage",
+    "MicroService": "p2p"
+  },
+  {
+    "Name": "我是否有未读消息",
+    "Command": "My.IsUnReadMessage",
+    "Handle": "My/IsUnReadMessage",
+    "MicroService": "p2p"
+  },
+  {
+    "Name": "我的消息详情",
+    "Command": "My.MessageDecsription",
+    "Handle": "My/MessageDecsription",
+    "MicroService": "p2p"
+  },
+  //--账户中心--
+  {
+    "Name": "我的资产基本信息",
+    "Command": "My.AccountsStatistics",
+    "Handle": "My/AccountsStatistics",
+    "MicroService": "p2p"
+  },
+  {
+    "Name": "待回收投资记录前5条",
+    "Command": "My.WaitRecycleOrderList",
+    "Handle": "My/WaitRecycleOrderList",
+    "MicroService": "p2p"
+  },
+  {
+    "Name": "待还款项目列表前5条",
+    "Command": "My.UnRepaymentList",
+    "Handle": "My/UnRepaymentList",
+    "MicroService": "p2p"
+  },
+  {
+    "Name": "累计收益",
+    "Command": "My.TotalIncome",
+    "Handle": "My/TotalIncome",
+    "MicroService": "p2p"
+  },
+  {
+    "Name": "我的投资记录",
+    "Command": "My.OrderInvertList",
+    "Handle": "My/OrderInvertList",
+    "MicroService": "p2p"
+  },
+  {
+    "Name": "投资记录详情",
+    "Command": "My.OrderInvertDetail",
+    "Handle": "My/OrderInvertDetail",
+    "MicroService": "p2p"
+  },
+  {
+    "Name": "我的融资记录",
+    "Command": "My.FinancingProjectList",
+    "Handle": "My/FinancingProjectList",
+    "MicroService": "p2p"
+  },
+  {
+    "Name": "融资项目详情",
+    "Command": "My.FinancingProjectDetail",
+    "Handle": "My/FinancingProjectDetail",
+    "MicroService": "p2p"
+  },
+  {
+    "Name": "项目对应的支付订单信息",
+    "Command": "My.GetPayListByFinancing",
+    "Handle": "My/GetPayListByFinancing",
+    "MicroService": "p2p"
+  },
+  {
+    "Name": "推荐码统计",
+    "Command": "My.ReFreeStatistics",
+    "Handle": "My/ReFreeStatistics",
+    "MicroService": "p2p"
+  },
+  {
+    "Name": "根据卡号获取银行信息",
+    "Command": "My.GetBankInfo",
+    "Handle": "My/GetBankInfo",
+    "MicroService": "p2p"
+  }
+]

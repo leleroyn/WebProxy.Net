@@ -6,6 +6,9 @@ using System.Linq.Expressions;
 using System.Web;
 using Newtonsoft.Json;
 using WebProxy.Models;
+using JWT;
+using JWT.Algorithms;
+using JWT.Serializers;
 
 namespace WebProxy.Common
 {
@@ -76,42 +79,28 @@ namespace WebProxy.Common
         /// <summary>
         /// 路由负载均衡
         /// </summary>
-        /// <param name="routeDatas"></param>
+        /// <param name="routeData"></param>
         /// <returns></returns>
-        public static Dictionary<string, CustomRouteData> RoutingLoadBalance(
-            Dictionary<string, CustomRouteData> routeDatas)
+        public static CustomRouteData RoutingLoadBalance(
+            CustomRouteData routeData)
         {
-            if (routeDatas == null)
-                return null;
-
-            var hostDatas = GetHostDatas().Select(x => new ServiceHostData()
+            var route = new CustomRouteData
             {
-                Name = "${" + x.Name.ToLower() + "}",
-                Hosts = x.Hosts
-            }).Where(x => routeDatas.Values.Any(y => y.Handle.StartsWith(x.Name)));
-
-            Dictionary<string, string> hostDic = new Dictionary<string, string>();
-            foreach (var host in hostDatas)
+                CacheCondition = routeData.CacheCondition,
+                CacheTime = routeData.CacheTime,
+                Command = routeData.Command,
+                MicroService = routeData.MicroService,
+                Name = routeData.Name,
+                System = routeData.System,
+                Version = routeData.Version
+            };
+            var hostData = GetHostDatas().FirstOrDefault(x => routeData.MicroService == x.Name);
+            if (hostData != null)
             {
-                var randomHost = RandomHelper.GetRandomList(host.Hosts.ToList(), 1);
-
-                hostDic.Add(host.Name, randomHost.First().ServiceUrl);
+                var randomHost = RandomHelper.GetRandomList(hostData.Hosts.ToList(), 1).First();
+                route.Handle = string.Concat(randomHost.ServiceUrl, routeData.Handle);
             }
-
-            Dictionary<string, CustomRouteData> newData = new Dictionary<string, CustomRouteData>();
-            foreach (var route in routeDatas)
-            {
-                var routedata = route.Value;
-                var host = hostDic.FirstOrDefault(x => routedata.Handle.ToLower().StartsWith(x.Key));
-                if (host.Key != null && host.Value != null)
-                {
-                    routedata.Handle = routedata.Handle.Replace(host.Key, host.Value);
-                }
-
-                newData.Add(route.Key, routedata);
-            }
-
-            return newData;
+            return route;
         }
 
         /// <summary>
@@ -154,6 +143,30 @@ namespace WebProxy.Common
                     .Where(x => string.IsNullOrEmpty(x.Version) || x.System == SytemType.None)
                     .OrderBy(x => x.Version).ThenBy(x => x.System)
                     .FirstOrDefault();
+        }
+
+        public static string CreateToken(CustomRouteData route)
+        {
+            var host = GetHostDatas().First(o => o.Name == route.MicroService);
+            IDateTimeProvider provider = new UtcDateTimeProvider();
+            var now = provider.GetNow();
+            var unixEpoch = new DateTime(1970, 1, 1, 0, 0, 0, DateTimeKind.Utc); // or use JwtValidator.UnixEpoch
+            var secondsSinceEpoch = Math.Round((now - unixEpoch).TotalSeconds) + 60; //60S后过期
+
+            var payload = new Dictionary<string, object>
+            {
+            { "app_id", host.ApplicationId },
+            { "exp", secondsSinceEpoch }
+            };
+            var secret = host.ApplicationKey;
+
+            IJwtAlgorithm algorithm = new HMACSHA256Algorithm();
+            IJsonSerializer serializer = new JsonNetSerializer();
+            IBase64UrlEncoder urlEncoder = new JwtBase64UrlEncoder();
+            IJwtEncoder encoder = new JwtEncoder(algorithm, serializer, urlEncoder);
+
+            var token = encoder.Encode(payload, secret);
+            return token;
         }
     }
 }

@@ -51,6 +51,7 @@ namespace WebProxy.Common
             //-- Post Data
             RestRequest request = new RestRequest(Method.POST);
             request.AddHeader("head", postHead);
+            request.AddHeader("Authorization", "Bearer " + head.Authorization);
             request.AddParameter("body", postBody);
 
 

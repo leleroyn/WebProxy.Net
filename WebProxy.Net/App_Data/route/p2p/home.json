@@ -1,0 +1,90 @@
+﻿[
+  //--首页--
+  {
+    "Name": "首页组件显示列表",
+    "Command": "Home.ComponentList",
+    "Handle": "Home/ComponentList",
+    "MicroService": "p2p"
+  },
+  {
+    "Name": "首页投资操作指引",
+    "Command": "Home.InvestmentGuide",
+    "Handle": "Home/InvestmentGuide",
+    "MicroService": "p2p"
+  },
+{
+    "Name": "首页投资操作指引-企业",
+    "Command": "Home.InvestmentGuideCompany",
+    "Handle": "Home/InvestmentGuideCompany",
+    "MicroService": "p2p"
+  },
+  {
+    "Name": "首页Banner图",
+    "Command": "Home.Banner",
+    "Handle": "Home/Banner",
+    "CacheTime": 30,
+    "MicroService": "p2p"
+  },
+  {
+    "Name": "首页Banner图 移动端（TM）",
+    "Command": "Home.BannerTM",
+    "Handle": "Home/BannerTM",
+    "CacheTime": 30,
+    "MicroService": "p2p"
+  },
+  {
+    "Name": "获取首页公告",
+    "Command": "Home.Notices",
+    "Handle": "Home/Notices",
+    "CacheTime": 30,
+    "MicroService": "p2p"
+  },
+  {
+    "Name": "获取首页公告 移动端(TM)",
+    "Command": "Home.NoticesTM",
+    "Handle": "Home/NoticesTM",
+    "CacheTime": 30,
+    "MicroService": "p2p"
+  },
+  {
+    "Name": "推荐项目公共",
+    "Command": "Home.ProjectRecommendCommon",
+    "Handle": "Home/ProjectRecommendCommon",
+    "CacheTime": 10,
+    "MicroService": "p2p"
+  },
+  {
+    "Name": "获取首页常见问题",
+    "Command": "Home.FAQ",
+    "Handle": "Home/FAQ",
+    "CacheTime": 30,
+    "MicroService": "p2p"
+  },
+  {
+    "Name": "获取首页常见问题 移动端（TM）",
+    "Command": "Home.FAQTM",
+    "Handle": "Home/FAQTM",
+    "CacheTime": 30,
+    "MicroService": "p2p"
+  },
+  {
+    "Name": "平台数据统计",
+    "Command": "Home.CumulativeAmount",
+    "Handle": "Home/CumulativeAmount",
+    "CacheTime": 30,
+    "MicroService": "p2p"
+  },
+  {
+    "Name": "最新投资记录",
+    "Command": "Home.InvestmentRecord",
+    "Handle": "Home/InvestmentRecord",
+    "CacheTime": 10,
+    "MicroService": "p2p"
+  },
+  {
+    "Name": "意见反馈",
+    "Command": "Home.AddFeedBack",
+    "Handle": "Home/AddFeedBack",
+    "MicroService": "p2p"
+  }
+]

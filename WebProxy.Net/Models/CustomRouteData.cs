@@ -14,6 +14,7 @@ namespace WebProxy.Models
         public string Handle { get; set; }
         public int CacheTime { get; set; }
         public Dictionary<string, string> CacheCondition { get; set; }
+        public string MicroService { get; set; }
     }
 
     /// <summary>

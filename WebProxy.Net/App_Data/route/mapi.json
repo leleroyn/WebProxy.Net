@@ -1,0 +1,1124 @@
+﻿[
+  //-- 管理后台 --
+  {
+    "Name": "我的工作台",
+    "Command": "Home.MyWorkPlace",
+    "Handle": "Home/MyWorkPlace",
+    "MicroService": "managerapi"
+  },
+  {
+    "Name": "首页菜单",
+    "Command": "Home.MenuList",
+    "Handle": "Home/MenuList",
+    "MicroService": "managerapi"
+  },
+  {
+    "Name": "获取枚举字典",
+    "Command": "Common.GetEnumType",
+    "Handle": "Common/GetEnumType",
+    "MicroService": "managerapi"
+  },
+  {
+    "Name": "获取省市信息",
+    "Command": "Financing.ProvinceCity",
+    "Handle": "Financing/ProvinceCity",
+    "MicroService": "managerapi"
+  },
+  {
+    "Name": "银行列表",
+    "Command": "Financing.BankList",
+    "Handle": "Financing/BankList",
+    "MicroService": "managerapi"
+  },
+  {
+    "Name": "支行列表",
+    "Command": "Financing.BranchBankList",
+    "Handle": "Financing/BranchBankList",
+    "MicroService": "managerapi"
+  },
+  {
+    "Name": "草稿箱",
+    "Command": "Financing.FinancingDraft",
+    "Handle": "Financing/FinancingDraft",
+    "MicroService": "managerapi"
+  },
+  {
+    "Name": "待办列表",
+    "Command": "Financing.FinancingTodoList",
+    "Handle": "Financing/FinancingTodoList"
+  },
+  {
+    "Name": "已办列表",
+    "Command": "Financing.FinancingDoneList",
+    "Handle": "Financing/FinancingDoneList",
+    "MicroService": "managerapi"
+  },
+  {
+    "Name": "资产信息",
+    "Command": "Financing.AssetTypes",
+    "Handle": "Financing/AssetTypes",
+    "MicroService": "managerapi"
+  },
+  {
+    "Name": "资产属性信息",
+    "Command": "Financing.AssetsProperty",
+    "Handle": "Financing/AssetsProperty",
+    "MicroService": "managerapi"
+  },
+  {
+    "Name": "信贷类型列表",
+    "Command": "Financing.GuaranteeType",
+    "Handle": "Financing/GuaranteeType",
+    "MicroService": "managerapi"
+  },
+  {
+    "Name": "项目名称",
+    "Command": "Financing.ProjectNames",
+    "Handle": "Financing/ProjectNames",
+    "MicroService": "managerapi"
+  },
+  {
+    "Name": "获取最新项目编号",
+    "Command": "Financing.GetNewestProjectNumber",
+    "Handle": "Financing/GetNewestProjectNumber",
+    "MicroService": "managerapi"
+  },
+  {
+    "Name": "假期列表",
+    "Command": "Financing.HolidayList",
+    "Handle": "Financing/HolidayList",
+    "MicroService": "managerapi"
+  },
+  {
+    "Name": "项目公共属性",
+    "Command": "Financing.GlobalParameters",
+    "Handle": "Financing/GlobalParameters",
+    "MicroService": "managerapi"
+  },
+  {
+    "Name": "校验融资人",
+    "Command": "Financing.VerifyFinancier",
+    "Handle": "Financing/VerifyFinancier",
+    "MicroService": "managerapi"
+  },
+  {
+    "Name": "创建项目",
+    "Command": "Financing.CreateProject",
+    "Handle": "Financing/CreateProject",
+    "MicroService": "managerapi"
+  },
+  {
+    "Name": "获取项目信息",
+    "Command": "Financing.GetFinancingById",
+    "Handle": "Financing/GetFinancingById",
+    "MicroService": "managerapi"
+  },
+  {
+    "Name": "校验资产唯一性",
+    "Command": "Financing.AssetsValiadate",
+    "Handle": "Financing/AssetsValiadate",
+    "MicroService": "managerapi"
+  },
+  {
+    "Name": "审批项目",
+    "Command": "Financing.Approve",
+    "Handle": "Financing/Approve",
+    "MicroService": "managerapi"
+  },
+  {
+    "Name": "驳回审批",
+    "Command": "Financing.Reject",
+    "Handle": "Financing/Reject",
+    "MicroService": "managerapi"
+  },
+  {
+    "Name": "获取最后审批记录",
+    "Command": "Financing.LastFlowRecord",
+    "Handle": "Financing/LastFlowRecord",
+    "MicroService": "managerapi"
+  },
+  {
+    "Name": "获取流程提单权限标识",
+    "Command": "Financing.FlowStartResource",
+    "Handle": "Financing/FlowStartResource",
+    "MicroService": "managerapi"
+  },
+  {
+    "Name": "焦点图管理_焦点图列表",
+    "Command": "Content.RecommendList",
+    "Handle": "Content/RecommendList",
+    "MicroService": "managerapi"
+  },
+  {
+    "Name": "焦点图管理_保存焦点图",
+    "Command": "Content.SaveRecommend",
+    "Handle": "Content/SaveRecommend",
+    "MicroService": "managerapi"
+  },
+  {
+    "Name": "焦点图管理_获取焦点图",
+    "Command": "Content.GetRecommend",
+    "Handle": "Content/GetRecommend",
+    "MicroService": "managerapi"
+  },
+  {
+    "Name": "焦点图管理_删除焦点图",
+    "Command": "Content.DelRecommend",
+    "Handle": "Content/DelRecommend",
+    "MicroService": "managerapi"
+  },
+  {
+    "Name": "焦点图管理_显示隐藏",
+    "Command": "Content.ChangeEnableRecommend",
+    "Handle": "Content/ChangeEnableRecommend",
+    "MicroService": "managerapi"
+  },
+  {
+    "Name": "焦点图管理_上移下移",
+    "Command": "Content.ChangeSortRecommend",
+    "Handle": "Content/ChangeSortRecommend",
+    "MicroService": "managerapi"
+  },
+  {
+    "Name": "公告管理_列表",
+    "Command": "Content.NoticeList",
+    "Handle": "Content/NoticeList",
+    "MicroService": "managerapi"
+  },
+  {
+    "Name": "公告管理_获取",
+    "Command": "Content.GetNotice",
+    "Handle": "Content/GetNotice",
+    "MicroService": "managerapi"
+  },
+  {
+    "Name": "公告管理_新增",
+    "Command": "Content.SaveNotice",
+    "Handle": "Content/SaveNotice",
+    "MicroService": "managerapi"
+  },
+  {
+    "Name": "公告管理_删除",
+    "Command": "Content.DelNotice",
+    "Handle": "Content/DelNotice",
+    "MicroService": "managerapi"
+  },
+  {
+    "Name": "公告管理_显示隐藏",
+    "Command": "Content.ChangeEnableNotice",
+    "Handle": "Content/ChangeEnableNotice",
+    "MicroService": "managerapi"
+  },
+  {
+    "Name": "公告管理_上移下移",
+    "Command": "Content.ChangeSortNotice",
+    "Handle": "Content/ChangeSortNotice",
+    "MicroService": "managerapi"
+  },
+  {
+    "Name": "意见反馈_列表",
+    "Command": "Content.FeedBackList",
+    "Handle": "Content/FeedBackList",
+    "MicroService": "managerapi"
+  },
+  {
+    "Name": "后台公告管理_列表",
+    "Command": "Content.MNoticeList",
+    "Handle": "Content/MNoticeList",
+    "MicroService": "managerapi"
+  },
+  {
+    "Name": "后台公告管理_新增",
+    "Command": "Content.SaveMNotice",
+    "Handle": "Content/SaveMNotice",
+    "MicroService": "managerapi"
+  },
+  {
+    "Name": "后台公告管理_新增",
+    "Command": "Content.GetMNotice",
+    "Handle": "Content/GetMNotice",
+    "MicroService": "managerapi"
+  },
+  {
+    "Name": "后台公告管理_删除",
+    "Command": "Content.DelMNotice",
+    "Handle": "Content/DelMNotice",
+    "MicroService": "managerapi"
+  },
+  {
+    "Name": "后台公告管理_显示隐藏",
+    "Command": "Content.ChangeEnableMNotice",
+    "Handle": "Content/ChangeEnableMNotice",
+    "MicroService": "managerapi"
+  },
+  {
+    "Name": "后台公告管理_上移下移",
+    "Command": "Content.ChangeSortMNotice",
+    "Handle": "Content/ChangeSortMNotice",
+    "MicroService": "managerapi"
+  },
+  {
+    "Name": "APP公告管理_列表",
+    "Command": "Content.AppNoticeList",
+    "Handle": "Content/AppNoticeList",
+    "MicroService": "managerapi"
+  },
+  {
+    "Name": "APP公告管理_新增",
+    "Command": "Content.SaveAppNotice",
+    "Handle": "Content/SaveAppNotice",
+    "MicroService": "managerapi"
+  },
+  {
+    "Name": "APP公告管理_获取",
+    "Command": "Content.GetAPPNotice",
+    "Handle": "Content/GetAPPNotice",
+    "MicroService": "managerapi"
+  },
+  {
+    "Name": "APP公告管理_删除",
+    "Command": "Content.DelAPPNotice",
+    "Handle": "Content/DelAPPNotice",
+    "MicroService": "managerapi"
+  },
+  {
+    "Name": "APP公告管理_显示隐藏",
+    "Command": "Content.ChangeEnableAPPNotice",
+    "Handle": "Content/ChangeEnableAPPNotice",
+    "MicroService": "managerapi"
+  },
+  {
+    "Name": "APP公告管理_上移下移",
+    "Command": "Content.ChangeSortAPPNotice",
+    "Handle": "Content/ChangeSortAPPNotice",
+    "MicroService": "managerapi"
+  },
+  {
+    "Name": "节假日管理_列表",
+    "Command": "Content.HolidayList",
+    "Handle": "Content/HolidayList",
+    "MicroService": "managerapi"
+  },
+  {
+    "Name": "节假日管理_新增",
+    "Command": "Content.SaveHoliday",
+    "Handle": "Content/SaveHoliday",
+    "MicroService": "managerapi"
+  },
+  {
+    "Name": "节假日管理_新增",
+    "Command": "Content.GetHoliday",
+    "Handle": "Content/GetHoliday",
+    "MicroService": "managerapi"
+  },
+  {
+    "Name": "节假日管理_删除",
+    "Command": "Content.DelHoliday",
+    "Handle": "Content/DelHoliday",
+    "MicroService": "managerapi"
+  },
+  {
+    "Name": "APP云端管理_列表",
+    "Command": "Content.AppCloudList",
+    "Handle": "Content/AppCloudList",
+    "MicroService": "managerapi"
+  },
+  {
+    "Name": "APP云端管理_新增",
+    "Command": "Content.SaveAppCloud",
+    "Handle": "Content/SaveAppCloud",
+    "MicroService": "managerapi"
+  },
+  {
+    "Name": "APP云端管理_获取",
+    "Command": "Content.GetAppCloud",
+    "Handle": "Content/GetAppCloud",
+    "MicroService": "managerapi"
+  },
+  {
+    "Name": "APP云端管理_删除",
+    "Command": "Content.DelAppCloud",
+    "Handle": "Content/DelAppCloud",
+    "MicroService": "managerapi"
+  },
+  {
+    "Name": "短信模板管理_列表",
+    "Command": "Content.SmsTemplateList",
+    "Handle": "Content/SmsTemplateList",
+    "MicroService": "managerapi"
+  },
+  {
+    "Name": "短信模板管理_获取",
+    "Command": "Content.GetSmsTemplate",
+    "Handle": "Content/GetSmsTemplate",
+    "MicroService": "managerapi"
+  },
+  {
+    "Name": "短信模板管理_新增",
+    "Command": "Content.SaveSmsTemplate",
+    "Handle": "Content/SaveSmsTemplate",
+    "MicroService": "managerapi"
+  },
+  {
+    "Name": "短信模板管理_删除",
+    "Command": "Content.DelSmsTemplate",
+    "Handle": "Content/DelSmsTemplate",
+    "MicroService": "managerapi"
+  },
+  {
+    "Name": "APP版本信息管理_列表",
+    "Command": "Content.APPManageList",
+    "Handle": "Content/APPManageList",
+    "MicroService": "managerapi"
+  },
+  {
+    "Name": "APP版本信息管理_新增",
+    "Command": "Content.SaveAPPManage",
+    "Handle": "Content/SaveAPPManage",
+    "MicroService": "managerapi"
+  },
+  {
+    "Name": "APP版本信息管理_删除",
+    "Command": "Content.DelAPPManage",
+    "Handle": "Content/DelAPPManage",
+    "MicroService": "managerapi"
+  },
+  {
+    "Name": "基础数据管理_列表",
+    "Command": "Content.GlobalSettingsList",
+    "Handle": "Content/GlobalSettingsList",
+    "MicroService": "managerapi"
+  },
+  {
+    "Name": "基础数据管理_新增",
+    "Command": "Content.SaveGlobalSettings",
+    "Handle": "Content/SaveGlobalSettings",
+    "MicroService": "managerapi"
+  },
+  {
+    "Name": "基础数据管理_获取",
+    "Command": "Content.GetGlobalSettings",
+    "Handle": "Content/GetGlobalSettings",
+    "MicroService": "managerapi"
+  },
+  {
+    "Name": "基础数据管理_删除",
+    "Command": "Content.DelGlobalSettings",
+    "Handle": "Content/DelGlobalSettings",
+    "MicroService": "managerapi"
+  },
+  {
+    "Name": "基础数据管理_显示隐藏",
+    "Command": "Content.ChangeEnableGlobalSettings",
+    "Handle": "Content/ChangeEnableGlobalSettings",
+    "MicroService": "managerapi"
+  },
+  {
+    "Name": "APP极光推送列表_列表",
+    "Command": "Content.NewList",
+    "Handle": "Content/NewList",
+    "MicroService": "managerapi"
+  },
+  {
+    "Name": "常见问题_列表",
+    "Command": "Content.CommonProblemList",
+    "Handle": "Content/CommonProblemList",
+    "MicroService": "managerapi"
+  },
+  {
+    "Name": "常见问题_获取",
+    "Command": "Content.GetCommonProblem",
+    "Handle": "Content/GetCommonProblem",
+    "MicroService": "managerapi"
+  },
+  {
+    "Name": "常见问题_新增",
+    "Command": "Content.SaveCommonProblem",
+    "Handle": "Content/SaveCommonProblem",
+    "MicroService": "managerapi"
+  },
+  {
+    "Name": "常见问题_删除",
+    "Command": "Content.DelCommonProblem",
+    "Handle": "Content/DelCommonProblem",
+    "MicroService": "managerapi"
+  },
+  {
+    "Name": "常见问题_显示隐藏",
+    "Command": "Content.ChangeEnableCommonProblem",
+    "Handle": "Content/ChangeEnableCommonProblem",
+    "MicroService": "managerapi"
+  },
+  {
+    "Name": "常见问题_上移下移",
+    "Command": "Content.ChangeSortCommonProblem",
+    "Handle": "Content/ChangeSortCommonProblem",
+    "MicroService": "managerapi"
+  },
+  {
+    "Name": "项目名称_列表",
+    "Command": "Content.ProjectNameList",
+    "Handle": "Content/ProjectNameList",
+    "MicroService": "managerapi"
+  },
+  {
+    "Name": "项目名称_获取",
+    "Command": "Content.GetProjectName",
+    "Handle": "Content/GetProjectName",
+    "MicroService": "managerapi"
+  },
+  {
+    "Name": "项目名称_新增",
+    "Command": "Content.SaveProjectName",
+    "Handle": "Content/SaveProjectName",
+    "MicroService": "managerapi"
+  },
+  {
+    "Name": "项目名称_删除",
+    "Command": "Content.DelProjectName",
+    "Handle": "Content/DelProjectName",
+    "MicroService": "managerapi"
+  },
+  {
+    "Name": "组织架构_列表",
+    "Command": "Content.OrganizationList",
+    "Handle": "Content/OrganizationList",
+    "MicroService": "managerapi"
+  },
+  {
+    "Name": "组织架构_获取",
+    "Command": "Content.GetOrganization",
+    "Handle": "Content/GetOrganization",
+    "MicroService": "managerapi"
+  },
+  {
+    "Name": "组织架构_新增",
+    "Command": "Content.SaveOrganization",
+    "Handle": "Content/SaveOrganization",
+    "MicroService": "managerapi"
+  },
+  {
+    "Name": "组织架构_删除",
+    "Command": "Content.DelOrganization",
+    "Handle": "Content/DelOrganization",
+    "MicroService": "managerapi"
+  },
+  {
+    "Name": "组织架构_禁用启用",
+    "Command": "Content.ChangeEnableOrganization",
+    "Handle": "Content/ChangeEnableOrganization",
+    "MicroService": "managerapi"
+  },
+  {
+    "Name": "获取项目列表",
+    "Command": "FinancingManage.ProjectList",
+    "Handle": "FinancingManage/ProjectList",
+    "MicroService": "managerapi"
+  },
+  {
+    "Name": "获取融资完成项目列表",
+    "Command": "FinancingManage.SuccessProjectList",
+    "Handle": "FinancingManage/SuccessProjectList",
+    "MicroService": "managerapi"
+  },
+  {
+    "Name": "获取流标项目列表",
+    "Command": "FinancingManage.FailProjectList",
+    "Handle": "FinancingManage/FailProjectList",
+    "MicroService": "managerapi"
+  },
+  {
+    "Name": "获取项目资产列表",
+    "Command": "FinancingManage.ProjectAssetList",
+    "Handle": "FinancingManage/ProjectAssetList",
+    "MicroService": "managerapi"
+  },
+  {
+    "Name": "获取审批项目列表",
+    "Command": "FinancingManage.TransferProjectList",
+    "Handle": "FinancingManage/TransferProjectList",
+    "MicroService": "managerapi"
+  },
+  {
+    "Name": "获取结算项目列表",
+    "Command": "FinancingManage.SettleProjectList",
+    "Handle": "FinancingManage/SettleProjectList",
+    "MicroService": "managerapi"
+  },
+  {
+    "Name": "获取放款明细列表",
+    "Command": "FinancingManage.TransferRecordList",
+    "Handle": "FinancingManage/TransferRecordList",
+    "MicroService": "managerapi"
+  },
+  {
+    "Name": "获取投资记录列表",
+    "Command": "FinancingManage.InvestRecordList",
+    "Handle": "FinancingManage/InvestRecordList",
+    "MicroService": "managerapi"
+  },
+  {
+    "Name": "获取还款记录列表",
+    "Command": "FinancingManage.RepayRecordList",
+    "Handle": "FinancingManage/RepayRecordList",
+    "MicroService": "managerapi"
+  },
+  {
+    "Name": "获取项目详情",
+    "Command": "FinancingManage.ProjectDetail",
+    "Handle": "FinancingManage/ProjectDetail",
+    "MicroService": "managerapi"
+  },
+  {
+    "Name": "获取结算明细",
+    "Command": "FinancingManage.SettleDetail",
+    "Handle": "FinancingManage/SettleDetail",
+    "MicroService": "managerapi"
+  },
+  {
+    "Name": "获取清单明细",
+    "Command": "FinancingManage.ProjectServiceLog",
+    "Handle": "FinancingManage/ProjectServiceLog",
+    "MicroService": "managerapi"
+  },
+  {
+    "Name": "编辑项目信息",
+    "Command": "FinancingManage.EditProjectInfo",
+    "Handle": "FinancingManage/EditProjectInfo",
+    "MicroService": "managerapi"
+  },
+  {
+    "Name": "编辑项目属性",
+    "Command": "FinancingManage.EditProjectPro",
+    "Handle": "FinancingManage/EditProjectPro",
+    "MicroService": "managerapi"
+  },
+  {
+    "Name": "编辑项目资产",
+    "Command": "FinancingManage.EditProjectAsset",
+    "Handle": "FinancingManage/EditProjectAsset",
+    "MicroService": "managerapi"
+  },
+  {
+    "Name": "编辑白名单",
+    "Command": "FinancingManage.EditWhiteList",
+    "Handle": "FinancingManage/EditWhiteList",
+    "MicroService": "managerapi"
+  },
+  {
+    "Name": "划账确认信息",
+    "Command": "FinancingManage.TransferConfirm",
+    "Handle": "FinancingManage/TransferConfirm",
+    "MicroService": "managerapi"
+  },
+  {
+    "Name": "结算确认信息",
+    "Command": "FinancingManage.SettleConfirm",
+    "Handle": "FinancingManage/SettleConfirm",
+    "MicroService": "managerapi"
+  },
+  {
+    "Name": "退款确认信息",
+    "Command": "FinancingManage.RefundConfirm",
+    "Handle": "FinancingManage/RefundConfirm",
+    "MicroService": "managerapi"
+  },
+  {
+    "Name": "操作流标",
+    "Command": "FinancingManage.FailProject",
+    "Handle": "FinancingManage/FailProject",
+    "MicroService": "managerapi"
+  },
+  {
+    "Name": "生成清单",
+    "Command": "FinancingManage.CreateServiceLog",
+    "Handle": "FinancingManage/CreateServiceLog",
+    "MicroService": "managerapi"
+  },
+  {
+    "Name": "保存编辑项目信息",
+    "Command": "FinancingManage.SaveEditProjectInfo",
+    "Handle": "FinancingManage/SaveEditProjectInfo",
+    "MicroService": "managerapi"
+  },
+  {
+    "Name": "保存编辑项目属性",
+    "Command": "FinancingManage.SaveEditProjectPro",
+    "Handle": "FinancingManage/SaveEditProjectPro",
+    "MicroService": "managerapi"
+  },
+  {
+    "Name": "保存编辑项目资产",
+    "Command": "FinancingManage.SaveEditProjectAsset",
+    "Handle": "FinancingManage/SaveEditProjectAsset",
+    "MicroService": "managerapi"
+  },
+  {
+    "Name": "保存白名单信息",
+    "Command": "FinancingManage.SaveEditWhiteList",
+    "Handle": "FinancingManage/SaveEditWhiteList",
+    "MicroService": "managerapi"
+  },
+  {
+    "Name": "导出项目列表",
+    "Command": "FinancingManage.ExportProjectList",
+    "Handle": "FinancingManage/ExportProjectList",
+    "MicroService": "managerapi"
+  },
+  {
+    "Name": "导出审批项目列表",
+    "Command": "FinancingManage.ExportTransferProjectList",
+    "Handle": "FinancingManage/ExportTransferProjectList",
+    "MicroService": "managerapi"
+  },
+  {
+    "Name": "导出结算项目列表",
+    "Command": "FinancingManage.ExportSettleProjectList",
+    "Handle": "FinancingManage/ExportSettleProjectList",
+    "MicroService": "managerapi"
+  },
+  {
+    "Name": "导出清单明细",
+    "Command": "FinancingManage.ExportProjectServiceLog",
+    "Handle": "FinancingManage/ExportProjectServiceLog",
+    "MicroService": "managerapi"
+  },
+  {
+    "Name": "导出投资记录",
+    "Command": "FinancingManage.ExportInvestRecordList",
+    "Handle": "FinancingManage/ExportInvestRecordList",
+    "MicroService": "managerapi"
+  },
+  {
+    "Name": "导出还款记录",
+    "Command": "FinancingManage.ExportRepayRecordList",
+    "Handle": "FinancingManage/ExportRepayRecordList",
+    "MicroService": "managerapi"
+  },
+  {
+    "Name": "用户管理",
+    "Command": "SystemManage.UserList",
+    "Handle": "SystemManage/UserList",
+    "MicroService": "managerapi"
+  },
+  {
+    "Name": "查询用户",
+    "Command": "SystemManage.GetAdminUser",
+    "Handle": "SystemManage/GetAdminUser",
+    "MicroService": "managerapi"
+  },
+  {
+    "Name": "保存用户",
+    "Command": "SystemManage.SaveUser",
+    "Handle": "SystemManage/SaveUser",
+    "MicroService": "managerapi"
+  },
+  {
+    "Name": "删除用户",
+    "Command": "SystemManage.DeleteUser",
+    "Handle": "SystemManage/DeleteUser",
+    "MicroService": "managerapi"
+  },
+  {
+    "Name": "所有角色",
+    "Command": "SystemManage.AllRoles",
+    "Handle": "SystemManage/AllRoles",
+    "MicroService": "managerapi"
+  },
+  {
+    "Name": "修改用户状态",
+    "Command": "SystemManage.ChangeUserStatus",
+    "Handle": "SystemManage/ChangeUserStatus",
+    "MicroService": "managerapi"
+  },
+  {
+    "Name": "重置密码",
+    "Command": "SystemManage.ResetPassword",
+    "Handle": "SystemManage/ResetPassword",
+    "MicroService": "managerapi"
+  },
+  {
+    "Name": "修改密码",
+    "Command": "SystemManage.ChangePassword",
+    "Handle": "SystemManage/ChangePassword",
+    "MicroService": "managerapi"
+  },
+  {
+    "Name": "资产类型列表",
+    "Command": "SystemManage.AssetsTypeList",
+    "Handle": "SystemManage/AssetsTypeList",
+    "MicroService": "managerapi"
+  },
+  {
+    "Name": "资产类型获取",
+    "Command": "SystemManage.GetAssetsType",
+    "Handle": "SystemManage/GetAssetsType",
+    "MicroService": "managerapi"
+  },
+  {
+    "Name": "资产类型保存",
+    "Command": "SystemManage.SaveAssetsType",
+    "Handle": "SystemManage/SaveAssetsType",
+    "MicroService": "managerapi"
+  },
+  {
+    "Name": "资产类型删除",
+    "Command": "SystemManage.DelAssetsType",
+    "Handle": "SystemManage/DelAssetsType",
+    "MicroService": "managerapi"
+  },
+  {
+    "Name": "资产属性列表",
+    "Command": "SystemManage.AssetsPropertyList",
+    "Handle": "SystemManage/AssetsPropertyList",
+    "MicroService": "managerapi"
+  },
+  {
+    "Name": "资产属性获取",
+    "Command": "SystemManage.GetAssetsProperty",
+    "Handle": "SystemManage/GetAssetsProperty",
+    "MicroService": "managerapi"
+  },
+  {
+    "Name": "资产属性保存",
+    "Command": "SystemManage.SaveAssetsProperty",
+    "Handle": "SystemManage/SaveAssetsProperty",
+    "MicroService": "managerapi"
+  },
+  {
+    "Name": "资产属性删除",
+    "Command": "SystemManage.DelAssetsProperty",
+    "Handle": "SystemManage/DelAssetsProperty",
+    "MicroService": "managerapi"
+  },
+  {
+    "Name": "查询用户资产属性",
+    "Command": "SystemManage.GetUserAssetsType",
+    "Handle": "SystemManage/GetUserAssetsType",
+    "MicroService": "managerapi"
+  },
+  {
+    "Name": "菜单管理",
+    "Command": "SystemManage.MenuList",
+    "Handle": "SystemManage/MenuList",
+    "MicroService": "managerapi"
+  },
+  {
+    "Name": "所有菜单",
+    "Command": "SystemManage.AllMenuList",
+    "Handle": "SystemManage/AllMenuList",
+    "MicroService": "managerapi"
+  },
+  {
+    "Name": "改变菜单排序",
+    "Command": "SystemManage.ChangeMenuSort",
+    "Handle": "SystemManage/ChangeMenuSort",
+    "MicroService": "managerapi"
+  },
+  {
+    "Name": "更改菜单显示状态",
+    "Command": "SystemManage.ChangeMenuVisible",
+    "Handle": "SystemManage/ChangeMenuVisible",
+    "MicroService": "managerapi"
+  },
+  {
+    "Name": "删除菜单",
+    "Command": "SystemManage.DeleteMenu",
+    "Handle": "SystemManage/DeleteMenu",
+    "MicroService": "managerapi"
+  },
+  {
+    "Name": "获取单个菜单",
+    "Command": "SystemManage.GetMenu",
+    "Handle": "SystemManage/GetMenu",
+    "MicroService": "managerapi"
+  },
+  {
+    "Name": "编辑菜单",
+    "Command": "SystemManage.SaveMenuEdit",
+    "Handle": "SystemManage/SaveMenuEdit",
+    "MicroService": "managerapi"
+  },
+  {
+    "Name": "角色管理",
+    "Command": "SystemManage.RoleList",
+    "Handle": "SystemManage/RoleList",
+    "MicroService": "managerapi"
+  },
+  {
+    "Name": "删除角色",
+    "Command": "SystemManage.DeleteRole",
+    "Handle": "SystemManage/DeleteRole",
+    "MicroService": "managerapi"
+  },
+  {
+    "Name": "查询角色",
+    "Command": "SystemManage.GetRole",
+    "Handle": "SystemManage/GetRole",
+    "MicroService": "managerapi"
+  },
+  {
+    "Name": "保存角色",
+    "Command": "SystemManage.SaveRole",
+    "Handle": "SystemManage/SaveRole",
+    "MicroService": "managerapi"
+  },
+  {
+    "Name": "查询用户",
+    "Command": "SystemManage.GetRoleUsers",
+    "Handle": "SystemManage/GetRoleUsers",
+    "MicroService": "managerapi"
+  },
+  {
+    "Name": "查询角色所有用户ID",
+    "Command": "SystemManage.GetAllUserIdByRoleId",
+    "Handle": "SystemManage/GetAllUserIdByRoleId",
+    "MicroService": "managerapi"
+  },
+  {
+    "Name": "添加角色用户",
+    "Command": "SystemManage.AddRoleUser",
+    "Handle": "SystemManage/AddRoleUser",
+    "MicroService": "managerapi"
+  },
+  {
+    "Name": "移除角色用户",
+    "Command": "SystemManage.RemoveRoleUser",
+    "Handle": "SystemManage/RemoveRoleUser",
+    "MicroService": "managerapi"
+  },
+  {
+    "Name": "查询资源列表",
+    "Command": "SystemManage.ResourceList",
+    "Handle": "SystemManage/ResourceList",
+    "MicroService": "managerapi"
+  },
+  {
+    "Name": "查询所有启用的资源列表",
+    "Command": "SystemManage.GetAllResources",
+    "Handle": "SystemManage/GetAllResources",
+    "MicroService": "managerapi"
+  },
+  {
+    "Name": "根据角色ID查询菜单",
+    "Command": "SystemManage.GetListByRoleId",
+    "Handle": "SystemManage/GetListByRoleId",
+    "MicroService": "managerapi"
+  },
+  {
+    "Name": "保存角色权限",
+    "Command": "SystemManage.SaveRolePrivilege",
+    "Handle": "SystemManage/SaveRolePrivilege",
+    "MicroService": "managerapi"
+  },
+  {
+    "Name": "查询用户组织机构",
+    "Command": "SystemManage.GetOrganizationByUserId",
+    "Handle": "SystemManage/GetOrganizationByUserId",
+    "MicroService": "managerapi"
+  },
+  {
+    "Name": "查询所有组织机构",
+    "Command": "SystemManage.GetAllOrganization",
+    "Handle": "SystemManage/GetAllOrganization",
+    "MicroService": "managerapi"
+  },
+  {
+    "Name": "查询所有子组织机构",
+    "Command": "SystemManage.GetAllSubOrg",
+    "Handle": "SystemManage/GetAllSubOrg",
+    "MicroService": "managerapi"
+  },
+  {
+    "Name": "查询资源列表",
+    "Command": "SystemManage.ResourceList",
+    "Handle": "SystemManage/ResourceList",
+    "MicroService": "managerapi"
+  },
+  {
+    "Name": "获取一条资源信息",
+    "Command": "SystemManage.GetResource",
+    "Handle": "SystemManage/GetResource",
+    "MicroService": "managerapi"
+  },
+  {
+    "Name": "新增一条资源信息",
+    "Command": "SystemManage.AddResource",
+    "Handle": "SystemManage/AddResource",
+    "MicroService": "managerapi"
+  },
+  {
+    "Name": "编辑一条资源信息",
+    "Command": "SystemManage.ResourceEdit",
+    "Handle": "SystemManage/ResourceEdit",
+    "MicroService": "managerapi"
+  },
+  {
+    "Name": "修改资源的可用性",
+    "Command": "SystemManage.ChangeResourceEnabled",
+    "Handle": "SystemManage/ChangeResourceEnabled",
+    "MicroService": "managerapi"
+  },
+  {
+    "Name": "删除一条资源信息",
+    "Command": "SystemManage.DeleteResource",
+    "Handle": "SystemManage/DeleteResource",
+    "MicroService": "managerapi"
+  },
+  {
+    "Name": "项目还款统计",
+    "Command": "Statistics.ProjectRepayInfo",
+    "Handle": "Statistics/ProjectRepayInfo",
+    "MicroService": "managerapi"
+  },
+  {
+    "Name": "用户登录",
+    "Command": "Account.Login",
+    "Handle": "Account/Login",
+    "MicroService": "managerapi"
+  },
+  {
+    "Name": "获取菜单url资源集合缓存",
+    "Command": "Account.GetResUrlDict",
+    "Handle": "Account/GetResUrlDict",
+    "MicroService": "managerapi"
+  },
+  {
+    "Name": "创建流程",
+    "Command": "Flow.CreateFlow",
+    "Handle": "Flow/CreateFlow",
+    "MicroService": "managerapi"
+  },
+  {
+    "Name": "流程列表",
+    "Command": "Flow.FlowList",
+    "Handle": "Flow/FlowList",
+    "MicroService": "managerapi"
+  },
+  {
+    "Name": "查询单个流程",
+    "Command": "Flow.GetFlow",
+    "Handle": "Flow/GetFlow",
+    "MicroService": "managerapi"
+  },
+  {
+    "Name": "步骤列表",
+    "Command": "Flow.ActivityList",
+    "Handle": "Flow/ActivityList",
+    "MicroService": "managerapi"
+  },
+  {
+    "Name": "更新流程信息",
+    "Command": "Flow.UpdateFlow",
+    "Handle": "Flow/UpdateFlow",
+    "MicroService": "managerapi"
+  },
+  {
+    "Name": "更新步骤信息",
+    "Command": "Flow.UpdateActivity",
+    "Handle": "Flow/UpdateActivity",
+    "MicroService": "managerapi"
+  },
+  {
+    "Name": "获取起始步骤的下行步骤及处理人信息",
+    "Command": "Flow.GetStartActivities",
+    "Handle": "Flow/GetStartActivities",
+    "MicroService": "managerapi"
+  },
+  {
+    "Name": "获取当前步骤的下行步骤及处理人信息",
+    "Command": "Flow.GetNextActivities",
+    "Handle": "Flow/GetNextActivities",
+    "MicroService": "managerapi"
+  },
+  {
+    "Name": "操作日志",
+    "Command": "StateQuery.OperationLogList",
+    "Handle": "StateQuery/OperationLogList",
+    "MicroService": "managerapi"
+  },
+  {
+    "Name": "划款记录",
+    "Command": "StateQuery.CardForOrderList",
+    "Handle": "StateQuery/CardForOrderList",
+    "MicroService": "managerapi"
+  },
+  {
+    "Name": "退款记录",
+    "Command": "StateQuery.CancelAmountOrderList",
+    "Handle": "StateQuery/CancelAmountOrderList",
+    "MicroService": "managerapi"
+  },
+  {
+    "Name": "指令查询",
+    "Command": "StateQuery.CmdRequestList",
+    "Handle": "StateQuery/CmdRequestList",
+    "MicroService": "managerapi"
+  },
+  {
+    "Name": "还款记录",
+    "Command": "StateQuery.RepaymentOrderList",
+    "Handle": "StateQuery/RepaymentOrderList",
+    "MicroService": "managerapi"
+  },
+  {
+    "Name": "获取指令信息",
+    "Command": "StateQuery.GetCmdRequest",
+    "Handle": "StateQuery/GetCmdRequest",
+    "MicroService": "managerapi"
+  },
+  {
+    "Name": "获取短信",
+    "Command": "Test.Sms",
+    "Handle": "Test/Sms",
+    "MicroService": "managerapi"
+  },
+  {
+    "Name": "员工列表",
+    "Command": "SystemManage.EmployeeList",
+    "Handle": "SystemManage/EmployeeList",
+    "MicroService": "managerapi"
+  },
+  {
+    "Name": "编辑员工",
+    "Command": "SystemManage.EmployeeEdit",
+    "Handle": "SystemManage/EmployeeEdit",
+    "MicroService": "managerapi"
+  },
+  {
+    "Name": "保存员工",
+    "Command": "SystemManage.EmployeeSave",
+    "Handle": "SystemManage/EmployeeSave",
+    "MicroService": "managerapi"
+  },
+  {
+    "Name": "修改员工状态",
+    "Command": "SystemManage.EmployeeChangeStatus",
+    "Handle": "SystemManage/EmployeeChangeStatus",
+    "MicroService": "managerapi"
+  },
+  {
+    "Name": "银行列表",
+    "Command": "SystemManage.BankOfSupportList",
+    "Handle": "SystemManage/BankOfSupportList",
+    "MicroService": "managerapi"
+  },
+  {
+    "Name": "编辑银行",
+    "Command": "SystemManage.BankOfSupportEdit",
+    "Handle": "SystemManage/BankOfSupportEdit",
+    "MicroService": "managerapi"
+  },
+  {
+    "Name": "保存银行",
+    "Command": "SystemManage.BankOfSupportSave",
+    "Handle": "SystemManage/BankOfSupportSave",
+    "MicroService": "managerapi"
+  },
+  {
+    "Name": "修改银行状态",
+    "Command": "SystemManage.BankOfSupportChangeStatus",
+    "Handle": "SystemManage/BankOfSupportChangeStatus",
+    "MicroService": "managerapi"
+  }
+]

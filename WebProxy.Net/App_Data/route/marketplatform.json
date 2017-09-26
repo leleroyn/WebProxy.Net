@@ -1,13 +1,33 @@
-[
+﻿[
   //-- 营销平台
   {
     "Name": "判断是否符合活动条件",
     "Command": "MarketPlatformApi.IsMeetRule",
-    "Handle": "${marketplatform}/IsMeetRule"
+    "Handle": "IsMeetRule",
+    "MicroService":"marketplatform"
   },
   {
     "Name": "登记投资成功订单",
     "Command": "MarketPlatformApi.JoinYX_FActivity",
-    "Handle": "${marketplatform}/JoinYX_FActivity"
-  }
+    "Handle": "JoinYX_FActivity",
+    "MicroService":"marketplatform"
+  },
+  {
+    "Name": "获取加息券列表",
+    "Command": "MarketPlatformApi.GetPlusCouponList",
+    "Handle": "GetPlusCouponList",
+    "MicroService":"marketplatform"
+   },
+   {
+    "Name": "获取加息券详情",
+    "Command": "MarketPlatformApi.GetPlusCouponInfo",
+    "Handle": "GetPlusCouponInfo",
+    "MicroService":"marketplatform"
+   },
+   {
+    "Name": "修改加息劝状态",
+    "Command": "MarketPlatformApi.UpdatePlusCouponStatus",
+    "Handle": "UpdatePlusCouponStatus",
+    "MicroService":"marketplatform"
+   }
 ]

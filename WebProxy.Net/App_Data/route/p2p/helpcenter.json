@@ -1,0 +1,29 @@
+﻿[ //--帮助中心 常见问--
+  {
+    "Name": "客服热线",
+    "Command": "HelpCenter.CustomerServiceTel",
+    "Handle": "HelpCenter/CustomerServiceTel",
+    "CacheTime": 30,
+    "MicroService": "p2p"
+  },
+  {
+    "Name": "帮助中心常见问",
+    "Command": "HelpCenter.FAQ",
+    "Handle": "HelpCenter/FAQ",
+    "CacheTime": 30,
+    "MicroService": "p2p"
+  },
+  {
+    "Name": "帮助中心平台公告列表",
+    "Command": "HelpCenter.Notices",
+    "Handle": "HelpCenter/Notices",
+    "CacheTime": 30,
+    "MicroService": "p2p"
+  },
+  {
+    "Name": "帮助中心平台公告详情",
+    "Command": "HelpCenter.NoticeDecsription",
+    "Handle": "HelpCenter/NoticeDecsription",
+    "MicroService": "p2p"
+  }
+]

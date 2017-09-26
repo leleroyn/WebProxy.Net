@@ -30,8 +30,7 @@ namespace WebProxy.Modules
                 head.System = Request.Form["system"];
                 head.Channel = Request.Form["channel"];
                 head.UserId = Request.Form["userid"];
-                head.UseCache = Request.Form["usecache"];
-                head.MultiRequestType = Request.Form["multirequesttype"];
+                head.UseCache = Request.Form["usecache"];              
 
                 head.SerialNumber = Guid.NewGuid().ToString();
                 head.RequestHost = "127.0.0.1";
@@ -50,31 +49,12 @@ namespace WebProxy.Modules
                 client.Proxy = null;
                 client.Timeout = 60000;
                 RestRequest request = new RestRequest(Method.POST);
-                request.AddHeader("head", headData);
+                request.AddHeader("head", headData);           
                 request.AddParameter("body", encryptBody);
-                string result = client.Execute(request).Content;
-
-                //if (head.Command.Contains(Settings.MultiCommandSplitChar))
-                //{
-                //    string[] cmds = head.Command.Split(Settings.MultiCommandSplitChar);
-                //    Dictionary<string, ResponseMsg> responseDic = new Dictionary<string, ResponseMsg>();
-                //    foreach (var response in JsonConvert.DeserializeObject<Dictionary<string, string>>(result))
-                //    {
-                //        var val = JsonConvert.DeserializeObject<ResponseMsg>(response.Value);
-                //        responseDic.Add(response.Key, val);
-                //    }
-                //}
+                string result = client.Execute(request).Content;           
 
                 return result;
             };
-        }
-
-        //public class ResponseMsg
-        //{
-        //    public string respCode { get; set; }
-        //    public string SN { get; set; }
-        //    public string respMsg { get; set; }
-        //    public Dictionary<string, object> respData { get; set; }
-        //}
+        }        
     }
 }

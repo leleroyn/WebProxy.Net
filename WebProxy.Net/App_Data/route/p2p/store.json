@@ -1,0 +1,21 @@
+﻿[
+  //-- 缓存读取--
+  {
+    "Name": "远程存储",
+    "Command": "Store.Set",
+    "Handle": "Store/Set",
+    "MicroService": "p2p"
+  },
+  {
+    "Name": "远程存储获取",
+    "Command": "Store.Get",
+    "Handle": "Store/Get",
+    "MicroService": "p2p"
+  },
+  {
+    "Name": "远程存储移除",
+    "Command": "Store.Remove",
+    "Handle": "Store/Remove",
+    "MicroService": "p2p"
+  }
+]

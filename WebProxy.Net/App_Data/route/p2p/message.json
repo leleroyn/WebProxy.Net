@@ -1,0 +1,20 @@
+﻿[ //-- 短信相关--
+  {
+    "Name": "获取短信验证码",
+    "Command": "Message.SendMessageValidateCode",
+    "Handle": "Message/SendMessageValidateCode",
+    "MicroService": "p2p"
+  },
+  {
+    "Name": "验证短信验证码是否正确",
+    "Command": "Message.ValidateMessageCode",
+    "Handle": "Message/ValidateMessageCode",
+    "MicroService": "p2p"
+  },
+  {
+    "Name": "根据手机号码获取短信验证码相关信息",
+    "Command": "Message.GetValidateCodeByMobile",
+    "Handle": "Message/GetValidateCodeByMobile",
+    "MicroService": "p2p"
+  }
+]

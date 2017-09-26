@@ -1,0 +1,32 @@
+﻿[ //--融资申请--
+  {
+    "Name": "根据用户类型获取资产类型列表",
+    "Command": "Loan.GetAssetsTypeByAccType",
+    "Handle": "Loan/GetAssetsTypeByAccType",
+    "MicroService": "p2p"
+  },
+  {
+    "Name": "用户是否已经签订融资协议",
+    "Command": "Loan.IsSignedUserAgreement",
+    "Handle": "Loan/IsSignedUserAgreement",
+    "MicroService": "p2p"
+  },
+  {
+    "Name": "添加融资申请",
+    "Command": "Loan.InsertUserAgreement",
+    "Handle": "Loan/InsertUserAgreement",
+    "MicroService": "p2p"
+  },
+  {
+    "Name": "根据用户ID显示融资人信息",
+    "Command": "Loan.FinancierInfoByUserID",
+    "Handle": "Loan/FinancierInfoByUserID",
+    "MicroService": "p2p"
+  },
+  {
+    "Name": "根据协议类型显示融资人信息",
+    "Command": "Loan.FinancierInfoByAssetsType",
+    "Handle": "Loan/FinancierInfoByAssetsType",
+    "MicroService": "p2p"
+  }
+]
