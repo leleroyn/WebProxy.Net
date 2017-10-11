@@ -80,26 +80,30 @@ namespace WebProxy.Modules
         /// <param name="body">请求参数</param>
         /// <returns></returns>
         protected bool CheckUseCache(bool? userCache, string channel, CustomRouteData route, Dictionary<string, object> body)
-        {           
+        {
             //启用缓存条件
             //- 请求Head参数UserCache:true
             //- 路由缓存时间配置大于0
             //- 渠道不为null，且渠道不在忽略的列表（IgnoreCacheChannel）中
             //- 满足请求条件，满足其一即可：
             //-- 请求Body无参数且路由缓存条件不存在
-            //-- 请求body含参数且路由缓存存在条件且请求body所有非空字段都包含在路由缓存条件中
+            //-- 请求body含参数且路由缓存存在条件且请求body所有非空字段都包含在路由缓存条件中           
 
             if (!userCache.HasValue || userCache.Value == false)
                 return false;
-            if (route.CacheTime == 0)
-                return false;
+
             if (SettingsHelper.IgnoreCacheChannel(channel))
                 return false;
+            if (route.CacheTime == 0)
+                return false;
 
-            if (body == null && route.CacheCondition == null)
+            if (body == null)
                 return true;
 
-            List<Tuple<string, bool>> parms = new List<Tuple<string,bool>>();
+            if (route.CacheCondition == null)
+                return false;
+
+            List<Tuple<string, bool>> parms = new List<Tuple<string, bool>>();
             foreach (var p in body)
             {
                 if (p.Value != null)
