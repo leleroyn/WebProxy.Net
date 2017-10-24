@@ -97,7 +97,7 @@ namespace WebProxy.Modules
             if (route.CacheTime == 0)
                 return false;
 
-            if (body == null)
+            if (body == null || body.Count == 0)
                 return true;
 
             if (route.CacheCondition == null)
